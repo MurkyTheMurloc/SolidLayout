@@ -1,36 +1,26 @@
 import { JSXElement, ParentComponent } from "solid-js";
-
+import { Gap,Padding } from "../types/css_types";
 interface FlexibleGridProps {
   children: JSXElement | JSXElement[];
-  gap?: string;
-  padding?: string;
+  gap?: Gap;
+  padding?: Padding;
 }
+
+function generateStyle(props:FlexibleGridProps  ): { [key: string]:string} {
+  return {
+    display: "flex",
+    "flex-wrap": "wrap",
+    padding: props.padding || "1rem",
+    gap: props.gap || "1rem",
+  }
+  };
 
 export const FlexibleGrid: ParentComponent<FlexibleGridProps> = function(props) {
   return (
-    <>
-
-      <div class="flexible_grid">
+    
+      <div class="flexibleGrid">
         {props.children}
       </div>
-
-      <style>
-        {`
-          .flexible_grid {
-                  display: flex;
-                  flex-wrap: wrap;
-                  padding: 1rem;
-                  gap: 1rem;
-                }
-
-            .flexible_grid > * {
-                  flex: 1;
-                }
-              `
-
-        }
-      </style>
-    </>
   );
 
 }

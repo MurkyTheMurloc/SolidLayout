@@ -46,7 +46,7 @@ const MyComponent = () => (
 <div>Item 3</div>
 </ReelGrid>
 );
-
+```
 
 
 ### Stack
@@ -137,7 +137,7 @@ const MyComponent = () => (
 );
 ```
 
-### 
+### Cluster
 The Cluster component is used to group and arrange a set of elements horizontally or vertically. It utilizes CSS flexbox properties to control the alignment and spacing of the elements. Here is an example of how to use the Cluster component:
 ```tsx
 import { Cluster } from 'solid-layout';

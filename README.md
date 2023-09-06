@@ -6,6 +6,16 @@ From the perspective of a backend developer who is not a CSS wizard, layouting i
 The goal of this library is to provide a solution to this pain point by offering minimal, lightweight, and highly customizable layout components. These components are designed to simplify the process of creating nasic layouts and user interfaces, allowing backend developers like me to focus on the core functionality of their applications when they need to do some Frontend stuff ore just like to tinker around.
 
 
+## Features
+
+- Minimal, lightweight, and highly customizable
+- Built with TypeScript and SolidJS
+- No dependencies
+- Works with any CSS framework or no framework at all
+- Supports responsive layouts
+- Fully type safe
+
+
 ## Components
 
 ### FlexibleGrid
@@ -80,5 +90,63 @@ const MyComponent = () => (
 <Center>
 <div>Centered Content</div>
 </Center>
+);
+```
+
+### ScrollArea
+
+The ScrollArea component is used to create a scrollable area for its child elements. It provides options for hiding the scrollbar if needed. Here is an example of how to use the ScrollArea component:
+
+```tsx
+import { ScrollArea } from 'solid-layout';
+
+const MyComponent = () => (
+<ScrollArea hideScrollbar={true}>
+<div>Item 1</div>
+<div>Item 2</div>
+<div>Item 3</div>
+</ScrollArea>
+);
+```
+
+
+### Center
+
+The Center component is used to horizontally and vertically center its child elements. It uses CSS flexbox properties to achieve the centering effect. Here is an example of how to use the Center component:
+```tsx
+import { Center } from 'solid-layout';
+
+const MyComponent = () => (
+<Center>
+<div>Centered Content</div>
+</Center>
+);
+```
+
+### DualPanel
+
+The DualPanel component is used to create a two-column layout with a resizable divider between the columns. It provides options for setting the initial sizes of the columns and controlling the resizing behavior. Here is an example of how to use the DualPanel component:
+```tsx
+import { DualPanel } from 'solid-layout';
+
+const MyComponent = () => (
+  <DualPanel>
+    <div>Left Panel</div>
+    <div>Right Panel</div>
+  </DualPanel>
+);
+```
+
+### 
+The Cluster component is used to group and arrange a set of elements horizontally or vertically. It utilizes CSS flexbox properties to control the alignment and spacing of the elements. Here is an example of how to use the Cluster component:
+```tsx
+import { Cluster } from 'solid-layout';
+
+const MyComponent = () => (
+  <Cluster direction="horizontal" spacing="1rem">
+    <div>Element 1</div>
+    <div>Element 2</div>
+    <div>Element 3</div>
+  </Cluster>
 );
 ```

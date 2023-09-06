@@ -1,10 +1,10 @@
 type SizeUnit = "px" | "rem" | "%" | "em" | "vh" | "vw" | "vmin" | "vmax";
 type Size = `${number}${SizeUnit}`;
 
-type GridUnit = "fr" | Size;
+type GridUnit = "fr" | SizeUnit;
 type GridSize = `${number}${GridUnit}`;
 
-
+export type Height = Size 
 export type FlexBasis = "auto" | "content" | "fit-content" | "max-content" | "min-content" | "inherit" | "initial" | "unset" | Size;
 export type GridAutoFlow = "row" | "column" | "row dense" | "column dense";
 export type GridAutoColumns = Size;
@@ -15,6 +15,6 @@ export type ScrollPadding = Size;
 export type Gap = Size;
 export type Padding = Size;
 export type Margin = Size;
-export type Columns = `${number} ${GridUnit}` | GridSize | `${number}`|number;
+export type Columns = GridSize | `${number}`;
 export type MarginInline = Size | "auto";
 export type ColumnLength = GridSize;

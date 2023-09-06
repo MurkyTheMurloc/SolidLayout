@@ -14,8 +14,7 @@ function generateStyle(props: GridProps): { [key: string]: string } {
   const repeatFunction = props.autoFill ? 'auto-fill' : 'auto-fit';
   return {
     display: "grid",
-    gridTemplateColumns: `repeat(${repeatFunction}, minmax(${props.minColumnWidth || "200px"}, 1fr))`, // Default to 1 column on small screens
-    gap: props.gap || "1rem",
+    gridTemplateColumns: `repeat(${repeatFunction}, minmax(${props.minColumnWidth || "200px"}, 1fr))`, 
     padding: props.padding || "1rem",
   };
 }

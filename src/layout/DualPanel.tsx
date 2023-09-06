@@ -24,7 +24,7 @@ function generateStyle(props:DualPannelProps ): { [key: string]:string} {
 export const DualPanel: ParentComponent<DualPannelProps> = function(props) {
   return (
 
-      <div style={generateStyle(props)} class="dualPannel">
+      <div style={generateStyle(props)} class="dual-panel">
         <div style={{
           "flex-basis": props.mainPannelSize||"500px",
           "flex-grow": "9999",

@@ -29,7 +29,7 @@ function generateStyle(props: ReelGridProps): { [key: string]: string } {
 
 export const ReelGrid: ParentComponent<ReelGridProps> = function(props) {
   return (
-      <div style={generateStyle(props)} class="reelGrid">
+      <div style={generateStyle(props)} class="reel-grid">
         {props.children}
       </div>
   );

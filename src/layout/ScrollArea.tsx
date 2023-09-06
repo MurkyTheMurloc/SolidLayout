@@ -1,25 +1,27 @@
 import { JSXElement, ParentComponent } from "solid-js";
+import {Height} from "../types/css_types";
 
 interface ScrollAreaProps {
-  children: JSXElement | JSXElement[];
+
   hideScrollbar?: boolean;
+  height?: Height;
 }
 
-function generateStyle(hideScrollbar: boolean): { [key: string]: string } {
+function generateStyle(props:ScrollAreaProps): { [key: string]: string } {
     return {
       position: "relative",
       overflowY: "scroll",
-      height: "100vh", 
+      height: props.height || "100vh", 
       justifyItems: "space-evenly",
-      scrollbarWidth: hideScrollbar ? "none" : "thin",
-      msOverflowStyle: hideScrollbar ? "none" : "auto", 
+      scrollbarWidth: props.hideScrollbar ? "none" : "thin",
+      msOverflowStyle: props.hideScrollbar ? "none" : "auto", 
     };
   }
 
 export const ScrollArea: ParentComponent<ScrollAreaProps> = function(props) {
- const style = generateStyle(props.hideScrollbar || false);
+ const style = generateStyle(props);
   return (
-    <div style={style} class="scrollArea">
+    <div style={style} class="scroll-area">
       {props.children}
     </div>
   );

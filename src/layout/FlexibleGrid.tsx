@@ -18,7 +18,7 @@ function generateStyle(props:FlexibleGridProps  ): { [key: string]:string} {
 export const FlexibleGrid: ParentComponent<FlexibleGridProps> = function(props) {
   return (
     
-      <div style={generateStyle(props)} class="flexibleGrid">
+      <div style={generateStyle(props)} class="flexible-grid">
         {props.children}
       </div>
   );

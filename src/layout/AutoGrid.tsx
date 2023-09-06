@@ -21,7 +21,7 @@ function generateStyle(props: AutoGridProps): { [key: string]: string } {
 
 export const AutoGrid: ParentComponent<AutoGridProps> = function(props) {
   return (
-      <div  style={generateStyle(props)} class="auto_grid">
+      <div  style={generateStyle(props)} class="autorid">
         {props.children}
       </div>
   );

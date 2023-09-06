@@ -15,6 +15,6 @@ export type ScrollPadding = Size;
 export type Gap = Size;
 export type Padding = Size;
 export type Margin = Size;
-export type Columns = `${number} ${GridUnit}` | GridSize;
+export type Columns = `${number} ${GridUnit}` | GridSize | `${number}`|number;
 export type MarginInline = Size | "auto";
 export type ColumnLength = GridSize;

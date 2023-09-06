@@ -11,7 +11,7 @@ interface StackProps {
 function generateStyle(props: StackProps): { [key: string]: string } {
   return {
     display: "flex",
-    flexDirection: props.direction || "column",
+    "flex-direction": props.direction || "column",
     gap: props.gap || "1rem",
     padding: props.padding || "1rem",
   };

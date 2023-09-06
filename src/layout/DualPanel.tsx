@@ -21,7 +21,7 @@ function generateStyle(props:DualPannelProps ): { [key: string]:string} {
   }
   };
 
-export const DualPannel: ParentComponent<DualPannelProps> = function(props) {
+export const DualPanel: ParentComponent<DualPannelProps> = function(props) {
   return (
 
       <div style={generateStyle(props)} class="dualPannel">

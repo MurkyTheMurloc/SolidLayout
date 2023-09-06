@@ -143,7 +143,7 @@ The Cluster component is used to group and arrange a set of elements horizontall
 import { Cluster } from 'solid-layout';
 
 const MyComponent = () => (
-  <Cluster direction="horizontal" spacing="1rem">
+  <Cluster spacing="1rem">
     <div>Element 1</div>
     <div>Element 2</div>
     <div>Element 3</div>

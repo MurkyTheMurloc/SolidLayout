@@ -10,7 +10,7 @@ The goal of this library is to provide a solution to this pain point by offering
 
 - Minimal, lightweight, and highly customizable
 - Built with TypeScript and SolidJS
-- No dependencies
+- requiring just one dependencie
 - Works with any CSS framework or no framework at all
 - Supports responsive layouts
 - Fully type safe
@@ -52,7 +52,7 @@ const MyComponent = () => (
 ### Stack
 
 The `Stack` component is used for creating vertical or horizontal stacks of elements. It uses CSS `flexbox` properties to control the direction and spacing of the stack. Here is an example of how to use the `Stack` component:
-jsx
+```jsx
 import { Stack } from 'solid-layout';
 
 const MyComponent = () => (
@@ -62,7 +62,6 @@ const MyComponent = () => (
 <div>Item 3</div>
 </Stack>
 );
-
 ```
 ### AutoGrid
 

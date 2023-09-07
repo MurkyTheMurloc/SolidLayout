@@ -1,4 +1,5 @@
+import { nanoid } from 'nanoid'
 export function createUniqueClassName(baseClassName: string): string {
-    return `${baseClassName}-${self.crypto.randomUUID()}`;
+    return `${baseClassName}-${nanoid()}`;
   }
 

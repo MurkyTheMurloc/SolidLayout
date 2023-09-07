@@ -1,10 +1,11 @@
 import { JSXElement, ParentComponent } from "solid-js";
 import {Height} from "../types/css_types";
-
+import {createUniqueClassName} from "../helper/helper";
 interface ScrollAreaProps {
 
   hideScrollbar?: boolean;
   height?: Height;
+  className?: string;
 }
 
 function generateStyle(props:ScrollAreaProps): { [key: string]: string } {
@@ -21,7 +22,7 @@ function generateStyle(props:ScrollAreaProps): { [key: string]: string } {
 export const ScrollArea: ParentComponent<ScrollAreaProps> = function(props) {
  const style = generateStyle(props);
   return (
-    <div style={style} class="scroll-area">
+    <div style={style} class={props.className || createUniqueClassName("scroll-area")}>
       {props.children}
     </div>
   );

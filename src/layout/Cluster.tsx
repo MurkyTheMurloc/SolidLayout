@@ -1,9 +1,10 @@
 import { ParentComponent } from "solid-js";
 import { Gap,Padding } from "../types/css_types";
-
+import {createUniqueClassName} from "../helper/helper";
 interface ClusterProps {
   gap?: Gap;
   padding?: Padding;
+  className?: string;
 }
 
 function generateStyle(props:ClusterProps ): { [key: string]: string } {
@@ -17,7 +18,7 @@ function generateStyle(props:ClusterProps ): { [key: string]: string } {
 
 export const Cluster: ParentComponent<ClusterProps> = function(props) {
   return (
-      <div style={generateStyle(props)}  class="cluster">
+      <div style={generateStyle(props)}  class={props.className||createUniqueClassName("cluster")}>
         {props.children}
       </div>
   );

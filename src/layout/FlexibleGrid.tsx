@@ -1,9 +1,11 @@
 import { JSXElement, ParentComponent } from "solid-js";
 import { Gap,Padding } from "../types/css_types";
+import {createUniqueClassName} from "../helper/helper";
 interface FlexibleGridProps {
   children: JSXElement | JSXElement[];
   gap?: Gap;
-  padding?: Padding;
+  padding?: Padding
+  className?: string;
 }
 
 function generateStyle(props:FlexibleGridProps  ): { [key: string]:string} {
@@ -18,7 +20,7 @@ function generateStyle(props:FlexibleGridProps  ): { [key: string]:string} {
 export const FlexibleGrid: ParentComponent<FlexibleGridProps> = function(props) {
   return (
     
-      <div style={generateStyle(props)} class="flexible-grid">
+      <div style={generateStyle(props)} class={props.className||createUniqueClassName("flex-grid")}>
         {props.children}
       </div>
   );

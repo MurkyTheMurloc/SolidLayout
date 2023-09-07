@@ -1,13 +1,14 @@
 
 import { JSXElement, ParentComponent } from "solid-js";
 import { MarginInline,Gap,FlexBasis } from "../types/css_types";
-
+import {createUniqueClassName} from "../helper/helper";
 interface DualPannelProps{
   children: [JSXElement, JSXElement];
   gap?: Gap;
   marginInline?: MarginInline;
   mainPannelSize?: FlexBasis;
   sidePannelSize?: FlexBasis;
+  className?: string;
 
 }
 
@@ -24,7 +25,7 @@ function generateStyle(props:DualPannelProps ): { [key: string]:string} {
 export const DualPanel: ParentComponent<DualPannelProps> = function(props) {
   return (
 
-      <div style={generateStyle(props)} class="dual-panel">
+      <div style={generateStyle(props)} class={props.className|| createUniqueClassName("dual-panel")}>
         <div style={{
           "flex-basis": props.mainPannelSize||"500px",
           "flex-grow": "9999",

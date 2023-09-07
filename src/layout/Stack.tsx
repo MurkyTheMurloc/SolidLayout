@@ -1,11 +1,12 @@
 import { JSXElement, ParentComponent } from "solid-js";
 import { Gap, Padding } from "../types/css_types";
-
+import {createUniqueClassName} from "../helper/helper";
 interface StackProps {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding;
   direction?: "row" | "column";
+  className?: string;
 }
 
 function generateStyle(props: StackProps): { [key: string]: string } {
@@ -19,7 +20,7 @@ function generateStyle(props: StackProps): { [key: string]: string } {
 
 export const Stack: ParentComponent<StackProps> = function(props) {
   return (
-    <div style={generateStyle(props)} class="stack">
+    <div style={generateStyle(props)} class={props.className || createUniqueClassName("stack")}>
       {props.children}
     </div>
   );

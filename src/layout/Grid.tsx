@@ -1,6 +1,6 @@
 import { JSXElement, ParentComponent } from "solid-js";
 import { Gap, Padding, Columns } from "../types/css_types";
-
+import {createUniqueClassName} from "../helper/helper";
 interface GridProps {
   children: JSXElement | JSXElement[];
   gap?: Gap;
@@ -8,6 +8,7 @@ interface GridProps {
   columns?: Columns;
   minColumnWidth?: string;
   autoFill?: boolean;
+  className?: string;
 }
 
 function generateStyle(props: GridProps): { [key: string]: string } {
@@ -22,7 +23,7 @@ function generateStyle(props: GridProps): { [key: string]: string } {
 export const Grid: ParentComponent<GridProps> = function(props) {
   return (
     <>
-      <div style={generateStyle(props)} class="grid">
+      <div style={generateStyle(props)} class={props.className ||  createUniqueClassName("grid")}>
         {props.children}
       </div>
       <style>

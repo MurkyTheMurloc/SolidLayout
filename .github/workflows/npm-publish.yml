@@ -16,6 +16,7 @@ jobs:
       - run: |
           npm install -g pnpm
           pnpm install
+          pnpm build
    
 
   publish-npm:
@@ -30,6 +31,7 @@ jobs:
       - run: |
           npm install -g pnpm
           pnpm install
+          pnpm build
       - run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}

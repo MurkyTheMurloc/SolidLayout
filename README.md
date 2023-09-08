@@ -149,3 +149,19 @@ const MyComponent = () => (
   </Cluster>
 );
 ```
+
+### AppShell
+The AppShell component is used to create a basic application shell layout with a header, left bar, and main content area.
+You can use AutoBreakpoints for responsive layouts.
+
+```tsx
+import {AppShell,BREAKPOINT_POSITION} from 'solid-layout';
+
+
+const MyComponent = () => (
+    <AppShell leftBarBreakPoint={BREAKPOINT_POSITION.TOP_LEFT} leftBarComponent={<MyNavBar/>} headerComponent={<MyHeaderComponent/>} footerComponent={<MyFooter/>}>
+              burgerMenuComponent={<Burger/>}>
+        <MyMainContent/>
+    </AppShell>
+);
+```

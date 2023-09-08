@@ -50,6 +50,7 @@ interface AppShellProps{
     bugerMenuComponent?:JSXElement|JSXElement[];
 }
 
+
 export const AppShell: ParentComponent<AppShellProps>=  function (props) {
     let getLeftBarBreakPoint:Accessor<BreakPointPosition|StartPosition>=()=>{return "bar-left"};
     let getRightBarBreakPoint:Accessor<BreakPointPosition|StartPosition> = ()=>{return "bar-right"};

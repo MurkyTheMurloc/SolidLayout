@@ -1,24 +1,22 @@
-name: Node.js Package
-
+name: development
 on:
   push:
     branches:
-      - main
+      - development
 
 jobs:
-
-  publish-npm:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
+          node-version: 16.x
       - run: |
           npm install -g pnpm
           pnpm install --frozen-lockfile
           pnpm build
-      - run: pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+      - name: Create Release Pull Request ore Publish
+        id: changesets/action@v1
+

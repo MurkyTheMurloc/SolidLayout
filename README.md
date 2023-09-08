@@ -159,7 +159,7 @@ import {AppShell,BREAKPOINT_POSITION} from 'solid-layout';
 
 
 const MyComponent = () => (
-    <AppShell leftBarBreakPoint={BREAKPOINT_POSITION.TOP_LEFT} leftBarComponent={<MyNavBar/>} headerComponent={<MyHeaderComponent/>} footerComponent={<MyFooter/>}>
+    <AppShell leftBarBreakPoint={BREAKPOINT_POSITION.TOP_LEFT} leftBarComponent={<MyNavBar/>} headerComponent={<MyHeaderComponent/>} footerComponent={<MyFooter/>}
               burgerMenuComponent={<Burger/>}>
         <MyMainContent/>
     </AppShell>

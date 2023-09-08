@@ -1,4 +1,5 @@
-name: development
+name: changeset
+
 on:
   push:
     branches:
@@ -8,15 +9,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: 16.x
-      - run: |
-          npm install -g pnpm
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies and build
+        run: |
           pnpm install --frozen-lockfile
           pnpm build
 
-      - name: Create Release Pull Request ore Publish
-        id: changesets/action@v1
+      - name: Create Release Pull Request or Publish
+        id: changesets/action
+        uses: changesets/action@v1
+        with:
+        # Configure any necessary options for the changesets/action here
 
+      - name: Create Pull Request to Main
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: "Merge changeset updates into main"
+          base: main
+          head: development
+          body: |
+            This pull request includes changeset updates from the development branch.

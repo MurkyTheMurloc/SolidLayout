@@ -5,7 +5,9 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      input: 'src/index.ts',
+      input: 'index.tsx',
+      treeshake: true,
+      targets: ["esm", "cjs"],
     },
   },
   plugins: [solid()],

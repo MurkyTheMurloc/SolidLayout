@@ -3,7 +3,7 @@
 ## Motivation
 From the perspective of a backend developer who is not a CSS wizard, layouting is often one of my most challenging and time-consuming aspects of web development. It can be frustrating to spend hours trying to get the layout just right. That's where the Solid Layout Library comes in.
 
-The goal of this library is to provide a solution to this pain point by offering minimal, lightweight, and highly customizable layout components. These components are designed to simplify the process of creating nasic layouts and user interfaces, allowing backend developers like me to focus on the core functionality of their applications when they need to do some Frontend stuff ore just like to tinker around.
+The goal of this library is to provide a solution to this pain point by offering minimal, lightweight, and highly customizable layout components. These components are designed to simplify the process of creating basic layouts and user interfaces, allowing backend developers like me to focus on the core functionality of their applications when they need to do some Frontend stuff ore just like to tinker around.
 
 
 ## Features

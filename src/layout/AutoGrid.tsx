@@ -3,12 +3,12 @@ import { Gap,Padding,Columns } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 
 interface AutoGridProps {
-  children: JSX.Element | JSX.Element[];
+
   gap?: Gap;
   padding?: Padding;
   columns?: Columns;
   className?: string;
-  
+
 }
 
 

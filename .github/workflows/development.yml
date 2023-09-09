@@ -25,17 +25,8 @@ jobs:
           pnpm install --frozen-lockfile
           pnpm build
 
-      - name: Create Release Pull Request or Publish
-        id: changesets/action
+      - name: Create Release Pull Request
         uses: changesets/action@v1
-        with:
-        # Configure any necessary options for the changesets/action here
-
-      - name: Create Pull Request to Main
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: "Merge changeset updates into main"
-          base: main
-          head: development
-          body: |
-            This pull request includes changeset updates from the development branch.
+        id: changeset/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.CHANGESET}}

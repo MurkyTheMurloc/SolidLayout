@@ -37,7 +37,7 @@
     "dev": "vite",
     "vite:build": "vite build",
     "preview": "vite preview",
-    "build": " rm -rf dist && rollup -c",
+    "build": " rm -rf dist && rollup -c"
   },
   "dependencies": {
     "nanoid": "^4.0.2"

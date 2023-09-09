@@ -6,20 +6,8 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: |
-          npm install -g pnpm
-          pnpm install
-   
 
   publish-npm:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -29,7 +17,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: |
           npm install -g pnpm
-          pnpm install
+          pnpm install --frozen-lockfile
+          pnpm build
       - run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}

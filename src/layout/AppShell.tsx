@@ -1,20 +1,20 @@
 import { Accessor, ParentComponent, Show, JSXElement, Switch,Match,} from "solid-js";
-import { useResponsiveLeftBarGrid, useResponsiveRightBarGrid } from "../hooks/useResponsiveGrid.ts";
-import { BreakPointPosition, StartPosition } from "../types/gridPosition.ts";
-import { HeaderContainer } from "../components/header/HeaderContainer.tsx";
-import { HeaderCenter} from "../components/header/HeaderCenter.tsx";
-import { HeaderLeft } from "../components/header/HeaderLeft.tsx";
-import { HeaderRight } from "../components/header/HeaderRight.tsx";
-import { FooterContainer } from "../components/footer//FooterContainer.tsx";
-import { FooterCenter } from "../components/footer/FooterCenter.tsx";
-import { FooterLeft } from "../components/footer//FooterLeft.tsx";
-import { FooterRight } from "../components/footer/FooterRight.tsx";
-import { PageCenterContainer } from "../components/main_page/PageCenterContainer.tsx";
-import { LeftBar } from "../components/main_page/LeftBar.tsx";
-import { RightBar } from "../components/main_page/RightBar.tsx";
-import { MainPage } from "../components/main_page//MainPage.tsx";
-import { MainPageTop } from "../components/main_page//MainPageTop.tsx";
-import { MainPageBottom } from "../components/main_page/MainPageBottom.tsx"
+import { useResponsiveLeftBarGrid, useResponsiveRightBarGrid } from "../hooks/useResponsiveGrid";
+import { BreakPointPosition, StartPosition } from "../types/gridPosition";
+import { HeaderContainer } from "../components/header/HeaderContainer";
+import { HeaderCenter} from "../components/header/HeaderCenter";
+import { HeaderLeft } from "../components/header/HeaderLeft";
+import { HeaderRight } from "../components/header/HeaderRight";
+import { FooterContainer } from "../components/footer//FooterContainer";
+import { FooterCenter } from "../components/footer/FooterCenter";
+import { FooterLeft } from "../components/footer//FooterLeft";
+import { FooterRight } from "../components/footer/FooterRight";
+import { PageCenterContainer } from "../components/main_page/PageCenterContainer";
+import { LeftBar } from "../components/main_page/LeftBar";
+import { RightBar } from "../components/main_page/RightBar";
+import { MainPage } from "../components/main_page//MainPage";
+import { MainPageTop } from "../components/main_page//MainPageTop";
+import { MainPageBottom } from "../components/main_page/MainPageBottom"
 function generateAppShellContainerStyle():{[key:string]:string}{
 return {
     width: "100%",
@@ -39,19 +39,19 @@ interface AppShellProps{
     leftBarBreakPoint?: StartPosition | BreakPointPosition;
     rightBarBreakPoint?:StartPosition | BreakPointPosition;
     headerLeft?:JSXElement|JSXElement[];
-    headerComponent?:JSXElement|JSXElement[];
+    headercomponentsnt?:JSXElement|JSXElement[];
     headerRight?:JSXElement|JSXElement[];
     footerLeft?:JSXElement|JSXElement[];
-    footerComponent?:JSXElement|JSXElement[];
+    footercomponentsnt?:JSXElement|JSXElement[];
     footerRight?:JSXElement|JSXElement[];
-    mainComponent?:JSXElement|JSXElement[];
-    leftBarComponent?:JSXElement|JSXElement[];
-    rightBarComponent?:JSXElement|JSXElement[];
-    bugerMenuComponent?:JSXElement|JSXElement[];
+    maincomponentsnt?:JSXElement|JSXElement[];
+    leftBarcomponentsnt?:JSXElement|JSXElement[];
+    rightBarcomponentsnt?:JSXElement|JSXElement[];
+    bugerMenucomponentsnt?:JSXElement|JSXElement[];
 }
 
 
-export const AppShell: ParentComponent<AppShellProps>=  function (props) {
+export const AppShell: Parentcomponentsnt<AppShellProps>=  function (props) {
     let getLeftBarBreakPoint:Accessor<BreakPointPosition|StartPosition>=()=>{return "bar-left"};
     let getRightBarBreakPoint:Accessor<BreakPointPosition|StartPosition> = ()=>{return "bar-right"};
     if(props.autoBreakPoints??true){
@@ -67,31 +67,31 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
                     {props.headerLeft}
 
             <Show when={getLeftBarBreakPoint()==="header-left" && getRightBarBreakPoint()!== "header-left"}>
-               {props.bugerMenuComponent}
+               {props.bugerMenucomponentsnt}
             </Show>
                 </HeaderLeft>
            <HeaderCenter>
-                {props.headerComponent}
+                {props.headercomponentsnt}
                 <Show when={getLeftBarBreakPoint()==="header-center" && getRightBarBreakPoint()!== "header-center"}>
-               {props.bugerMenuComponent}
+               {props.bugerMenucomponentsnt}
             </Show>
            </HeaderCenter>
               <HeaderRight>
                     {props.headerRight}
             <Show when={getLeftBarBreakPoint()==="header-right" && getRightBarBreakPoint()!== "header-right"}>
-                {props.bugerMenuComponent}
+                {props.bugerMenucomponentsnt}
             </Show>
             </HeaderRight>
             </HeaderContainer>
             <PageCenterContainer>
                 <Show when={getLeftBarBreakPoint()==="bar-left"}>
             <LeftBar getGridArea={getLeftBarBreakPoint}>
-                {props.leftBarComponent}
+                {props.leftBarcomponentsnt}
             </LeftBar>
             </Show>
             <Show when={getLeftBarBreakPoint()==="bar-right"}>
             <RightBar getGridArea={getLeftBarBreakPoint}>
-                {props.leftBarComponent}
+                {props.leftBarcomponentsnt}
             </RightBar>
             </Show>
             <MainPage>
@@ -101,23 +101,23 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
                 <Switch>
                 <Match when={getRightBarBreakPoint()==="app-shell-main-page-container-top" && getLeftBarBreakPoint() !== "app-shell-main-page-container-top"}>
                 <MainPageTop>
-                    {props.rightBarComponent}
+                    {props.rightBarcomponentsnt}
                 </MainPageTop>
                 </Match>
                 <Match when={getLeftBarBreakPoint()==="app-shell-main-page-container-top" }>
                 <MainPageTop>
-                    {props.leftBarComponent}
+                    {props.leftBarcomponentsnt}
                 </MainPageTop>
                 </Match>
                 <Match when={getLeftBarBreakPoint()==="app-shell-main-page-container-bottom" && getRightBarBreakPoint() !=="app-shell-main-page-container-bottom"}>
                 <MainPageBottom>
-                    {props.leftBarComponent}
+                    {props.leftBarcomponentsnt}
                 </MainPageBottom>
 
                 </Match>
                 <Match when={getRightBarBreakPoint()==="app-shell-main-page-container-bottom" && getLeftBarBreakPoint() !== "app-shell-main-page-container-bottom"}>
                  <MainPageBottom>
-                    {props.rightBarComponent}
+                    {props.rightBarcomponentsnt}
                 </MainPageBottom>
                 </Match>
                 </Switch>
@@ -134,7 +134,7 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
                 {props.footerLeft}
                 </FooterLeft>
                 <FooterCenter>
-                    {props.footerComponent}
+                    {props.footercomponentsnt}
                     </FooterCenter>
                     <FooterRight>
                         {props.footerRight}

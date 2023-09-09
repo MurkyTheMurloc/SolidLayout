@@ -27,4 +27,4 @@ jobs:
       - name: Create Release Pull Request
         uses: changesets/action@v1
         env:
-          GITHUB_TOKEN: ${{"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"}}
+          GITHUB_TOKEN: "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"

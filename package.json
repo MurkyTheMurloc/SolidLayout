@@ -1,11 +1,11 @@
 {
   "name": "solid-layout",
   "private": false,
-  "version": "1.1.4",
-  "source": "dist/index.jsx",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.ts",
+  "version": "1.1.5",
+  "source": "./dist/source/index.jsx",
+  "main": "./dist/source/index.jsx",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.ts",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",

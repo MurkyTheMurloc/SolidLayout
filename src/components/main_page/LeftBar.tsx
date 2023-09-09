@@ -1,5 +1,5 @@
 import { ParentComponent,Accessor } from "solid-js";
-import{BreakPointPosition,StartPosition} from "../../types/gridPosition.ts"
+import{BreakPointPosition,StartPosition} from "../../types/gridPosition"
 
 
 function generateAppShellLeftBarStyle(getGridArea:Accessor<BreakPointPosition|StartPosition>):{[key:string]:string}{

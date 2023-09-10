@@ -1,5 +1,5 @@
 type SizeUnit = "px" | "rem" | "%" | "em" | "vh" | "vw" | "vmin" | "vmax";
-type Size = `${number}${SizeUnit}`;
+export type Size = `${number}${SizeUnit}`;
 
 type GridUnit = "fr" | SizeUnit;
 type GridSize = `${number}${GridUnit}`;

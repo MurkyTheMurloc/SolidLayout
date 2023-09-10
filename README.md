@@ -201,3 +201,71 @@ const MyComponent = () => (
     </AppShell>
 );
 ```
+
+### SmallContainer
+The SmallContainer component is used to create a container with a fixed width. It provides options for setting the width and padding of the container.
+Default width is 200px.
+Default height is 200px
+ Here is an example of how to use the SmallContainer component:
+```tsx
+import { SmallContainer } from 'solid-layout';
+
+const MyComponent = () => (
+  <SmallContainer>
+    <div>Inhalt des SmallContainers</div>
+  </SmallContainer>
+);
+```
+### MediumContainer
+The MediumContainer component is used to create a container with a fixed width. It provides options for setting the width and padding of the container. 
+Default width is 300px.
+Default height is 400px
+Here is an example of how to use the MediumContainer component:
+```tsx
+import { MediumContainer } from 'solid-layout';
+
+const MyComponent = () => (
+  <MediumContainer>
+    <div>Inhalt des MediumContainers</div>
+  </MediumContainer>
+);
+```
+
+### LargeContainer
+The LargeContainer component is used to create a container with a fixed width. It provides options for setting the width and padding of the container.
+Default width is 500px.
+Default height is 600px.
+ Here is an example of how to use the LargeContainer component:
+```tsx
+import { LargeContainer } from 'solid-layout';
+
+const MyComponent = () => (
+  <LargeContainer>
+    <div>Inhalt des LargeContainers</div>
+  </LargeContainer>
+);
+```
+
+### AutoContainer
+The AutoContainer component is used to create a container with a dynamic width and height. It provides options for setting the width and padding of the container.
+
+Here is an example of how to use the AutoContainer component:
+```tsx
+import { AutoContainer } from 'solid-layout';
+
+const MyComponent = () => (
+  <AutoContainer>
+    <div>Inhalt des AutoContainers</div>
+  </AutoContainer>
+);
+```
+
+
+
+
+### Support Me
+
+if you like my work feel free to hydrate me so I always stay caffiend
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%E2%98%95-yellow?style=flat-square)](https://www.buymeacoffee.com/MurkyTheMurloc)
+
+

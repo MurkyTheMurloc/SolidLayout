@@ -1,6 +1,6 @@
 import { Stack } from './layout/Stack';
 import { Grid } from './layout/Grid';
-import { Center } from './layout/Center';
+import { Center,Right,Left } from './layout/Center';
 import { AutoGrid } from './layout/AutoGrid';
 import { ScrollArea } from './layout/ScrollArea';
 import { Cluster } from './layout/Cluster';
@@ -11,4 +11,4 @@ import {AppShell} from "./layout/AppShell";
 import {BREAKPOINT_POSITION} from "./enums/break_point_enum";
 
 
-export{Stack, Grid, Center, AutoGrid, ScrollArea, Cluster, DualPanel, FlexibleGrid,ReelGrid,AppShell,BREAKPOINT_POSITION};
+export{Stack, Grid, Center,Right,Left, AutoGrid, ScrollArea, Cluster, DualPanel, FlexibleGrid,ReelGrid,AppShell,BREAKPOINT_POSITION};

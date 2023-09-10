@@ -21,3 +21,25 @@ export const Center: ParentComponent<CenterProps> = function(props) {
     </div>
   );
 }
+
+export const Left: ParentComponent<CenterProps> = function (props) {
+  return (
+    <div
+      style={{ ...generateStyle(), "justify-content": "flex-start" }}
+      class={props.className || createUniqueClassName("left")}
+    >
+      {props.children}
+    </div>
+  );
+};
+
+export const Right: ParentComponent<CenterProps> = function (props) {
+  return (
+    <div
+      style={{ ...generateStyle(), "justify-content": "flex-end" }}
+      class={props.className || createUniqueClassName("right")}
+    >
+      {props.children}
+    </div>
+  );
+};

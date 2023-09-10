@@ -92,6 +92,44 @@ const MyComponent = () => (
 );
 ```
 
+### Right
+The Right component is used to align content to the right. It utilizes CSS flexbox properties to achieve the alignment effect. Here is an example of how to use the Right component:
+```tsx
+import { Right } from 'solid-layout';
+
+const MyComponent = () => (
+  <Right>
+    <div>Right-aligned content</div>
+  </Right>
+);
+```
+### Left
+The Left component is used to align content to the left. It utilizes CSS flexbox properties to achieve the alignment effect. Here is an example of how to use the Left component:
+```tsx
+import { Left } from 'solid-layout';
+const MyComponent = () => (
+  <Left>
+    <div>Left-aligned content</div>
+  </Left>
+);
+```
+
+### Spacer
+The Space component allows you to adjust the spacing between elements in a container. You can control the size of the spacing with the size prop by specifying a size value such as "1rem" or "20px".
+```tsx
+import { Space } from 'solid-layout';
+
+const MyComponent = () => (
+  <div>
+    <div>Element 1</div>
+    <Space size="1rem" />
+    <div>Element 2</div>
+    <Space size="1rem" />
+    <div>Element 3</div>
+  </div>
+);
+```
+
 ### ScrollArea
 
 The ScrollArea component is used to create a scrollable area for its child elements. It provides options for hiding the scrollbar if needed. Here is an example of how to use the ScrollArea component:

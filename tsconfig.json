@@ -27,6 +27,7 @@
   "include": ["src",
     "src/index.tsx"
   ],
+  "exclude": ["node_modules", "dist"],
   "outDir": "dist",
   "references": [{ "path": "./tsconfig.node.json" }],
     "exclude": ["node_modules", "dist"]

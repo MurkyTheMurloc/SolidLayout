@@ -43,3 +43,14 @@ export const Right: ParentComponent<CenterProps> = function (props) {
     </div>
   );
 };
+
+export const Apart: ParentComponent<CenterProps> = function (props) {
+  return (
+    <div
+      style={{ ...generateStyle(), "justify-content": "space-between" }}
+      class={props.className || createUniqueClassName("apart")}
+    >
+      {props.children}
+    </div>
+  );
+};

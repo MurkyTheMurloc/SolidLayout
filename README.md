@@ -114,6 +114,16 @@ const MyComponent = () => (
 );
 ```
 
+### Apart 
+The Apart component is used to align content to the left and right. It utilizes CSS flexbox properties to achieve the alignment effect. Here is an example of how to use the Apart component:
+```tsx
+import { Apart } from 'solid-layout';
+const MyComponent = () => (
+  <Apart>
+    <div>Left-aligned content</div>
+  </Apart>
+```
+
 ### Spacer
 The Space component allows you to adjust the spacing between elements in a container. You can control the size of the spacing with the size prop by specifying a size value such as "1rem" or "20px".
 ```tsx
@@ -147,18 +157,6 @@ const MyComponent = () => (
 ```
 
 
-### Center
-
-The Center component is used to horizontally and vertically center its child elements. It uses CSS flexbox properties to achieve the centering effect. Here is an example of how to use the Center component:
-```tsx
-import { Center } from 'solid-layout';
-
-const MyComponent = () => (
-<Center>
-<div>Centered Content</div>
-</Center>
-);
-```
 
 ### DualPanel
 

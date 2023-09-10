@@ -9,6 +9,7 @@ import{FlexibleGrid} from './layout/FlexibleGrid';
 import { ReelGrid } from './layout/Reel';
 import {AppShell} from "./layout/AppShell";
 import {BREAKPOINT_POSITION} from "./enums/break_point_enum";
+import {SmallContainer,MediumContainer,LargeContainer,AutoContainer} from "./layout/Container";
 
 
-export{Stack, Grid, Center,Right,Left,Apart, AutoGrid, ScrollArea, Cluster, DualPanel, FlexibleGrid,ReelGrid,AppShell,BREAKPOINT_POSITION};
+export{Stack, Grid, Center,Right,Left,Apart, AutoGrid, ScrollArea, Cluster, DualPanel, FlexibleGrid,ReelGrid,AppShell,BREAKPOINT_POSITION,SmallContainer,MediumContainer,LargeContainer,AutoContainer};

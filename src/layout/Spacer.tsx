@@ -1,4 +1,4 @@
-import {ParentComponent } from "solid-js";
+import {Component } from "solid-js";
 import {createUniqueClassName} from "../helper/helper";
 import { Size } from "../types/css_types";
 interface SpaceProps {
@@ -6,7 +6,7 @@ interface SpaceProps {
     width?: Size;
 }
 
-export const Spacer: ParentComponent<SpaceProps> = function(props) {
+export const Spacer: Component<SpaceProps> = function(props) {
   const style = {
     width: props.width || "1rem",
     height: props.height || "1rem",

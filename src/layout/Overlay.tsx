@@ -6,6 +6,7 @@ import {createUniqueClassName} from "../helper/helper.ts";
 const trackZindexBackground: {[key:string]:string} = {};
 const trackZindexForeground: {[key:string]:string} = {};
 
+type Position = "relative" | "absolute" | "fixed" | "sticky";
 
 function generateRandomNegativeZindex(name:string=createUniqueClassName("zIndex")): string {
     if(trackZindexBackground[name]){
@@ -29,10 +30,12 @@ function generateRandomPositiveZindex(name:string=createUniqueClassName("zIndex"
 
 interface MoveToBackGroundProps {
     name?: string;
+    position?: Position;
 }
 
 interface MoveToForeGroundProps {
     name?: string;
+    position?:Position;
 }
 export const MoveToBackGround: ParentComponent<MoveToBackGroundProps> = function (props) {
     const zindex =  generateRandomNegativeZindex(props.name)
@@ -41,14 +44,14 @@ export const MoveToBackGround: ParentComponent<MoveToBackGroundProps> = function
     createEffect(() =>
         // @ts-ignore
         c().forEach((item) => {
-            (item.style.position = "absolute"), (item.style.zIndex = zindex);
+            (item.style.position =  props.position || "absolute"), (item.style.zIndex = zindex);
         })
     );
 
     return (
         <div
             style={{
-                position: "absolute",
+                position: props.position || "absolute",
                 "z-index": zindex,
             }}
         >
@@ -65,14 +68,14 @@ export const MoveToForeGround: ParentComponent<MoveToForeGroundProps> = function
     createEffect(() =>
         // @ts-ignore
         c().forEach((item) => {
-            (item.style.position = "absolute"), (item.style.zIndex = zindex);
+            (item.style.position =  props.position || "absolute"), (item.style.zIndex = zindex);
         })
     );
 
     return (
         <div
             style={{
-                position: "absolute",
+                position:  props.position || "absolute",
                 "z-index": zindex,
             }}
         >

@@ -44,16 +44,17 @@
     "build": " rm -rf dist && rollup -c"
   },
   "dependencies": {
-    "nanoid": "^4.0.2"
+    "nanoid": "^4.0.2",
+    "rollup-plugin-gzip": "^3.1.0"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
-    "vite": "^4.4.9",
-    "vite-plugin-solid": "^2.7.0",
     "@changesets/cli": "^2.26.2",
     "changeset": "^0.2.6",
     "rollup": "^3.29.0",
     "rollup-preset-solid": "^2.0.1",
-    "solid-js": "^1.7.11"
+    "solid-js": "^1.7.11",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-solid": "^2.7.0"
   }
 }

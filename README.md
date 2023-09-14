@@ -265,7 +265,7 @@ const MyComponent = () => (
 
 ### Support Me
 
-if you like my work feel free to hydrate me so I always stay caffiend
+if you like my work feel free to hydrate me so I always stay focused
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%E2%98%95-yellow?style=flat-square)](https://www.buymeacoffee.com/MurkyTheMurloc)
 
 

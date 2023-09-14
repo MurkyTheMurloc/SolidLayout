@@ -8,6 +8,9 @@ dependencies:
   nanoid:
     specifier: ^4.0.2
     version: 4.0.2
+  rollup-plugin-gzip:
+    specifier: ^3.1.0
+    version: 3.1.0(rollup@3.29.0)
 
 devDependencies:
   '@changesets/cli':
@@ -2688,7 +2691,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /function-bind@1.1.1:
@@ -3505,6 +3507,15 @@ packages:
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
     dev: true
 
+  /rollup-plugin-gzip@3.1.0(rollup@3.29.0):
+    resolution: {integrity: sha512-PFS9s6/w6dCra6/Z8PGD+ug3aaaqKLDCbr5y1Ek71Wd4rQSmMnOqCIIMgwbYxZ9A/gjP3pCN6rA4pAG47jxF0w==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      rollup: '>=2.0.0'
+    dependencies:
+      rollup: 3.29.0
+    dev: false
+
   /rollup-preset-solid@2.0.1:
     resolution: {integrity: sha512-CPJn3SqADlIxhAW3jwZuAFRyZcz7HPeUAz4f+6BzulxHnK4v6tgoTbMvk8vEsfsvHwiTmX93KHIKdf79aTdVSA==}
     dependencies:
@@ -3531,7 +3542,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.3
-    dev: true
 
   /run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}

@@ -11,6 +11,7 @@ import {AppShell} from "./layout/AppShell";
 import {BREAKPOINT_POSITION} from "./enums/break_point_enum";
 import {SmallContainer,MediumContainer,LargeContainer,AutoContainer} from "./layout/Container";
 import {Spacer} from "./layout/Spacer";
+import {MoveToBackGround,MoveToForeGround} from "./layout/Overlay";
 
 
-export{Spacer,Stack, Grid, Center,Right,Left,Apart, AutoGrid, ScrollArea, Cluster, DualPanel, FlexibleGrid,ReelGrid,AppShell,BREAKPOINT_POSITION,SmallContainer,MediumContainer,LargeContainer,AutoContainer};
+export{MoveToBackGround,MoveToForeGround,Spacer,Stack, Grid, Center,Right,Left,Apart, AutoGrid, ScrollArea, Cluster, DualPanel, FlexibleGrid,ReelGrid,AppShell,BREAKPOINT_POSITION,SmallContainer,MediumContainer,LargeContainer,AutoContainer};

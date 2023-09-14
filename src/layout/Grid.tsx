@@ -1,4 +1,4 @@
-import {Accessor, JSXElement, ParentComponent} from "solid-js";
+import {Accessor, JSXElement, onMount, ParentComponent} from "solid-js";
 import { Gap, Padding } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 import {useAutoBreakPoints} from "../hooks/useResponsiveGrid";
@@ -26,7 +26,8 @@ function generateStyle(props: GridProps, autoGrid:Accessor<string>): { [key: str
 export const Grid: ParentComponent<GridProps> = function(props) {
   let autoBreakPoints:Accessor<string>= ()=>{return `repeat(${props.autoFill ? 'auto-fill' : 'auto-fit'}, minmax(${props.maxColumnWidth|| "3"}, 1fr));`}
   if(props.AutoBreakPoints??true) {
-    autoBreakPoints = useAutoBreakPoints(props.autoFill, props.maxColumnWidth, props.breakPointLayout)
+    onMount(()=>{autoBreakPoints = useAutoBreakPoints(props.autoFill, props.maxColumnWidth, props.breakPointLayout)
+    })
   }
   return (
     <>

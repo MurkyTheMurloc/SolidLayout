@@ -7,12 +7,12 @@ interface SpaceProps {
 }
 
 export const Spacer: Component<SpaceProps> = function(props) {
-  const style = {
-    width: props.width || "1rem",
-    height: props.height || "1rem",
-  };
+
 
   return (
-    <div style={style} class={createUniqueClassName("space")} />
+    <div style={{
+      width: props.width || "1rem",
+      height: props.height || "1rem",}
+    } class={createUniqueClassName("space")} />
   );
 };

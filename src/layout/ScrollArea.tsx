@@ -20,9 +20,9 @@ function generateStyle(props:ScrollAreaProps): { [key: string]: string } {
   }
 
 export const ScrollArea: ParentComponent<ScrollAreaProps> = function(props) {
- const style = generateStyle(props);
+
   return (
-    <div style={style} class={props.className || createUniqueClassName("scroll-area")}>
+    <div style={generateStyle(props)} class={props.className || createUniqueClassName("scroll-area")}>
       {props.children}
     </div>
   );

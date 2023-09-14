@@ -260,12 +260,32 @@ const MyComponent = () => (
 );
 ```
 
+### MoveToBackground
+The MoveToBackground component is used to move one ore more elements to the background. You can set the position with the prop atribute. Defaukt ist absolute. If you want to move 2 different components to the same background level you can give them the  same name with the prop name. otherwise they will be on different levels.
+```tsx
+import { MoveToBackground } from 'solid-layout';
 
+const MyComponent = () => (
+  <MoveToBackground>
+    <div>Element in the background</div>
+  </MoveToBackground>
+);
+```
+### MoveToForeground
+The MoveToForeground component is used to move one ore more elements to the foreground. You can set the position with the prop atribute. Defaukt ist absolute. If you want to move 2 different components to the same foreground level you can give them the  same name with the prop name. otherwise they will be on different levels.
+```tsx
+import { MoveToForeground } from 'solid-layout';
+const MyComponent = () => (
+  <MoveToForeground>
+    <div>Element in the foreground</div>
+  </MoveToForeground>
+);
+```
 
 
 ### Support Me
 
-if you like my work feel free to hydrate me so I always stay caffiend
+if you like my work feel free to hydrate me so I always stay focused
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%E2%98%95-yellow?style=flat-square)](https://www.buymeacoffee.com/MurkyTheMurloc)
 
 

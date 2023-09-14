@@ -1,4 +1,4 @@
-import { Accessor,ParentComponent, Show, JSXElement, Switch,Match,} from "solid-js";
+import {Accessor, ParentComponent, Show, JSXElement, Switch, Match, onMount,} from "solid-js";
 import { useResponsiveLeftBarGrid, useResponsiveRightBarGrid } from "../hooks/useResponsiveGrid";
 import { BreakPointPosition, StartPosition } from "../types/gridPosition";
 import { HeaderContainer } from "../components/header/HeaderContainer";
@@ -54,8 +54,11 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
     let getLeftBarBreakPoint:Accessor<BreakPointPosition|StartPosition>=()=>{return "bar-left"};
     let getRightBarBreakPoint:Accessor<BreakPointPosition|StartPosition> = ()=>{return "bar-right"};
     if(props.autoBreakPoints??true){
-        getLeftBarBreakPoint = useResponsiveLeftBarGrid();
-        getRightBarBreakPoint = useResponsiveRightBarGrid();
+        onMount(()=>{
+            getLeftBarBreakPoint = useResponsiveLeftBarGrid();
+            getRightBarBreakPoint = useResponsiveRightBarGrid();
+        })
+
     }
 
 

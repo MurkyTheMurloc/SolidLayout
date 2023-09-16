@@ -1,7 +1,7 @@
 import { ParentComponent,JSX } from "solid-js";
 import {Height} from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
-interface ScrollAreaProps  extends JSX.HTMLAttributes<HTMLDivElement> {
+interface ScrollAreaProps extends JSX.DOMAttributes<HTMLDivElement>  {
   scrollbarWidth?: "none" | "thin";
   msOverflowStyle?: "none" | "auto";
   hideScrollbar?: boolean;

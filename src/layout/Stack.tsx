@@ -1,7 +1,7 @@
 import { JSXElement, ParentComponent,JSX } from "solid-js";
 import { Gap, Padding } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
-interface StackProps  extends JSX.HTMLAttributes<HTMLDivElement> {
+interface StackProps  extends JSX.DOMAttributes<HTMLDivElement>  {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding;

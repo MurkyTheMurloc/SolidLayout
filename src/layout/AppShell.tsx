@@ -40,12 +40,12 @@ interface AppShellProps{
     autoBreakPoints?:boolean;
     leftBarBreakPoint?: StartPosition | BreakPointPosition;
     rightBarBreakPoint?:StartPosition | BreakPointPosition;
-    headerLeft?:JSXElement|JSXElement[];
-    headerComponent?:JSXElement|JSXElement[];
-    headerRightComponent?:JSXElement|JSXElement[];
-    footerLeftComponent?:JSXElement|JSXElement[];
-    footerComponent?:JSXElement|JSXElement[];
-    footerRightComponent?:JSXElement|JSXElement[];
+    leftHeaderComponent?:JSXElement|JSXElement[];
+    mainHeaderComponent?:JSXElement|JSXElement[];
+    rightHeaderComponent?:JSXElement|JSXElement[];
+    leftFooterComponent?:JSXElement|JSXElement[];
+    mainFooterComponent?:JSXElement|JSXElement[];
+    rightFooterComponent?:JSXElement|JSXElement[];
     leftBarComponent?:JSXElement|JSXElement[];
     rightBarComponent?:JSXElement|JSXElement[];
     bugerMenuComponent?:JSXElement|JSXElement[];
@@ -68,20 +68,20 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
         <div style={generateAppShellContainerStyle()} class="app-shell-container">
             <HeaderContainer>
                 <HeaderLeft>
-                    {props.headerLeft}
+                    {props.leftHeaderComponent}
 
             <Show when={getLeftBarBreakPoint()==="header-left" && getRightBarBreakPoint()!== "header-left"}>
                {props.bugerMenuComponent}
             </Show>
                 </HeaderLeft>
            <HeaderCenter>
-                {props.headerComponent}
+                {props.mainHeaderComponent}
                 <Show when={getLeftBarBreakPoint()==="header-center" && getRightBarBreakPoint()!== "header-center"}>
                {props.bugerMenuComponent}
             </Show>
            </HeaderCenter>
               <HeaderRight>
-                    {props.headerRightComponent}
+                    {props.rightHeaderComponent}
             <Show when={getLeftBarBreakPoint()==="header-right" && getRightBarBreakPoint()!== "header-right"}>
                 {props.bugerMenuComponent}
             </Show>
@@ -135,13 +135,13 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
             <FooterContainer>
 
             <FooterLeft>
-                {props.footerLeftComponent}
+                {props.leftFooterComponent}
                 </FooterLeft>
                 <FooterCenter>
-                    {props.footerComponent}
+                    {props.mainFooterComponent}
                     </FooterCenter>
                     <FooterRight>
-                        {props.footerRightComponent}
+                        {props.rightFooterComponent}
                     </FooterRight>
             </FooterContainer>
         </div>

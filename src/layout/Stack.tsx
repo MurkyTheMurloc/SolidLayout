@@ -1,4 +1,4 @@
-import { JSXElement, ParentComponent } from "solid-js";
+import { JSXElement, ParentComponent,JSX } from "solid-js";
 import { Gap, Padding } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 interface StackProps {
@@ -9,7 +9,7 @@ interface StackProps {
   className?: string;
 }
 
-function generateStyle(props: StackProps): { [key: string]: string } {
+function generateStyle(props: StackProps): JSX.CSSProperties {
   return {
     display: "flex",
     "flex-direction": props.direction || "column",

@@ -1,11 +1,11 @@
-import { JSXElement, ParentComponent } from "solid-js";
+import { JSXElement, ParentComponent,JSX } from "solid-js";
 import {createUniqueClassName} from "../helper/helper";
 interface CenterProps {
   children: JSXElement | JSXElement[];
   className?: string;
 }
 
-function generateStyle(): { [key: string]: string } {
+function generateStyle(): JSX.CSSProperties {
   return {
     display: "flex",
     "justify-content": "center",

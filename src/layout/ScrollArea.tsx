@@ -1,21 +1,22 @@
-import { ParentComponent } from "solid-js";
+import { ParentComponent,JSX } from "solid-js";
 import {Height} from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 interface ScrollAreaProps {
-
+  scrollbarWidth: "none" | "thin";
+  msOverflowStyle: "none" | "auto";
   hideScrollbar?: boolean;
   height?: Height;
   className?: string;
 }
 
-function generateStyle(props:ScrollAreaProps): { [key: string]: string } {
+function generateStyle(props:ScrollAreaProps) : JSX.CSSProperties {
     return {
       position: "relative",
-      overflowY: "scroll",
+      "overflow-y": "scroll",
       height: props.height || "100vh",
-      justifyItems: "space-evenly",
-      scrollbarWidth: props.hideScrollbar ? "none" : "thin",
-      msOverflowStyle: props.hideScrollbar ? "none" : "auto",
+      "justify-items": "space-evenly",
+      "scrollbar-width": props.hideScrollbar ? "none" : "thin",
+      "-ms-overflow-style": props.hideScrollbar ? "none" : "auto",
     };
   }
 

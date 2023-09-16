@@ -1,4 +1,4 @@
-import {Accessor, ParentComponent, Show, JSXElement, Switch, Match, onMount,} from "solid-js";
+import {Accessor, ParentComponent, Show, JSXElement, Switch, Match, onMount,JSX} from "solid-js";
 import { useResponsiveLeftBarGrid, useResponsiveRightBarGrid } from "../hooks/useResponsiveGrid";
 import { BreakPointPosition, StartPosition } from "../types/gridPosition";
 import { HeaderContainer } from "../components/header/HeaderContainer";
@@ -15,7 +15,9 @@ import { RightBar } from "../components/main_page/RightBar";
 import { MainPage } from "../components/main_page//MainPage";
 import { MainPageTop } from "../components/main_page//MainPageTop";
 import { MainPageBottom } from "../components/main_page/MainPageBottom"
-function generateAppShellContainerStyle():{[key:string]:string}{
+
+
+function generateAppShellContainerStyle(): JSX.CSSProperties{
 return {
     width: "100%",
     height: "100vh",

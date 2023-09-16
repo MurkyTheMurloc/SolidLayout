@@ -1,4 +1,4 @@
-import { ParentComponent } from "solid-js";
+import { ParentComponent,JSX } from "solid-js";
 import { Gap,Padding,Columns } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 
@@ -13,7 +13,7 @@ interface AutoGridProps {
 
 
 
-function generateStyle(props: AutoGridProps): { [key: string]: string } {
+function generateStyle(props: AutoGridProps): JSX.CSSProperties {
   return {
     padding: props.padding || "1rem",
     display: "grid",

@@ -12,7 +12,7 @@ interface ScrollAreaProps {
 function generateStyle(props:ScrollAreaProps) : JSX.CSSProperties {
     return {
       position: "relative",
-      "overflow-y": "scroll",
+      "overflow-y": "auto",
       height: props.height || "100vh",
       "justify-items": "space-evenly",
       "scrollbar-width": props.hideScrollbar ? "none" : "thin",

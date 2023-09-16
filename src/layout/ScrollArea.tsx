@@ -2,8 +2,8 @@ import { ParentComponent,JSX } from "solid-js";
 import {Height} from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 interface ScrollAreaProps {
-  scrollbarWidth: "none" | "thin";
-  msOverflowStyle: "none" | "auto";
+  scrollbarWidth?: "none" | "thin";
+  msOverflowStyle?: "none" | "auto";
   hideScrollbar?: boolean;
   height?: Height;
   className?: string;

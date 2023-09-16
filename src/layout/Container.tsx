@@ -6,7 +6,7 @@ interface ContainerProps extends JSX.DOMAttributes<HTMLDivElement> {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding;
-  class: string;
+  class?: string;
   height?: Size;
   width?: Size;
 }

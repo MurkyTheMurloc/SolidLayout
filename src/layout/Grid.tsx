@@ -3,13 +3,14 @@ import { Gap, Padding } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 import {useAutoBreakPoints} from "../hooks/useResponsiveGrid";
 import {BreakPointLayout} from "../types/break_point_layout";
-interface GridProps {
+
+interface GridProps extends JSX.DOMAttributes<HTMLDivElement> {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding;
   maxColumnWidth?: number;
   autoFill?: boolean;
-  className?: string;
+  class?: string;
   AutoBreakPoints?: boolean;
   breakPointLayout: BreakPointLayout,
 }
@@ -24,6 +25,7 @@ function generateStyle(props: GridProps, autoGrid:Accessor<string>):  JSX.CSSPro
 }
 
 export const Grid: ParentComponent<GridProps> = function(props) {
+  const{class:className, ...restProps} = props;
   let autoBreakPoints:Accessor<string>= ()=>{return `repeat(${props.autoFill ? 'auto-fill' : 'auto-fit'}, minmax(${props.maxColumnWidth|| "3"}, 1fr));`}
   if(props.AutoBreakPoints??true) {
     onMount(()=>{autoBreakPoints = useAutoBreakPoints(props.autoFill, props.maxColumnWidth, props.breakPointLayout)
@@ -31,7 +33,7 @@ export const Grid: ParentComponent<GridProps> = function(props) {
   }
   return (
     <>
-      <div style={generateStyle(props,autoBreakPoints)} class={props.className ||  createUniqueClassName("grid")}>
+      <div style={generateStyle(props,autoBreakPoints)} class={props.class ||  createUniqueClassName("grid")} {...restProps}>
         {props.children}
       </div>
     </>

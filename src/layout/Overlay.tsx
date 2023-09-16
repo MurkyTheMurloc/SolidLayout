@@ -1,4 +1,4 @@
-import type {ParentComponent } from "solid-js";
+import type {ParentComponent,JSX } from "solid-js";
 import { children, createEffect,  } from "solid-js";
 
 import {createUniqueClassName} from "../helper/helper";
@@ -28,12 +28,12 @@ function generateRandomPositiveZindex(name:string=createUniqueClassName("zIndex"
     return `${random}`;
 }
 
-interface MoveToBackGroundProps {
+interface MoveToBackGroundProps extends JSX.DOMAttributes<HTMLDivElement> {
     name?: string;
     position?: Position;
 }
 
-interface MoveToForeGroundProps {
+interface MoveToForeGroundProps extends JSX.DOMAttributes<HTMLDivElement> {
     name?: string;
     position?:Position;
 }
@@ -54,6 +54,7 @@ export const MoveToBackGround: ParentComponent<MoveToBackGroundProps> = function
                 position: props.position || "absolute",
                 "z-index": zindex,
             }}
+            {...props}
         >
             {c()}
         </div>
@@ -74,6 +75,7 @@ export const MoveToForeGround: ParentComponent<MoveToForeGroundProps> = function
 
     return (
         <div
+        {...props}
             style={{
                 position:  props.position || "absolute",
                 "z-index": zindex,

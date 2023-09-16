@@ -2,12 +2,12 @@ import { ParentComponent,JSX } from "solid-js";
 import { Gap,Padding,Columns } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 
-interface AutoGridProps {
+interface AutoGridProps extends JSX.DOMAttributes<HTMLDivElement> {
 
   gap?: Gap;
   padding?: Padding;
   columns?: Columns;
-  className?: string;
+  class?: string;
 
 }
 
@@ -23,8 +23,9 @@ function generateStyle(props: AutoGridProps): JSX.CSSProperties {
 }
 
 export const AutoGrid: ParentComponent<AutoGridProps> = function(props) {
+   const { class: className, ...restProps } = props;
   return (
-      <div  style={generateStyle(props)} class={props.className|| createUniqueClassName("auto-grid") } >
+      <div  style={generateStyle(props)} class={props.class|| createUniqueClassName("auto-grid") } {...restProps} >
         {props.children}
       </div>
   );

@@ -1,12 +1,12 @@
-import { JSXElement, ParentComponent } from "solid-js";
+import { JSXElement, ParentComponent, JSX } from "solid-js";
 import { Gap, Padding, Size } from "../types/css_types";
 import { createUniqueClassName } from "../helper/helper";
 
-interface ContainerProps {
+interface ContainerProps extends JSX.DOMAttributes<HTMLDivElement> {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding;
-  className?: string;
+  class: string;
   height?: Size;
   width?: Size;
 }
@@ -14,6 +14,7 @@ interface ContainerProps {
 export const SmallContainer: ParentComponent<ContainerProps> = function (
   props
 ) {
+  const { class: className, ...restProps } = props;
   return (
     <div
       style={{
@@ -22,8 +23,8 @@ export const SmallContainer: ParentComponent<ContainerProps> = function (
         height: props.height || "100px",
         width: props.width || "100px",
       }}
-      class={props.className || createUniqueClassName("small-container")}
-    >
+      class={props.class || createUniqueClassName("small-container")}
+   >
       {props.children}
     </div>
   );
@@ -32,6 +33,7 @@ export const SmallContainer: ParentComponent<ContainerProps> = function (
 export const MediumContainer: ParentComponent<ContainerProps> = function (
   props
 ) {
+  const { class: className, ...restProps } = props;
   return (
     <div
       style={{
@@ -40,7 +42,8 @@ export const MediumContainer: ParentComponent<ContainerProps> = function (
         height: props.height || "200px",
         width: props.width || "200px",
       }}
-      class={props.className || createUniqueClassName("medium-container")}
+      class={props.class || createUniqueClassName("medium-container")}
+    { ...restProps}
     >
       {props.children}
     </div>
@@ -48,6 +51,7 @@ export const MediumContainer: ParentComponent<ContainerProps> = function (
 };
 
 export const LargeContainer: ParentComponent<ContainerProps> = function (props) {
+  const { class: className, ...restProps } = props;
   return (
     <div
       style={{
@@ -56,16 +60,18 @@ export const LargeContainer: ParentComponent<ContainerProps> = function (props) 
         height: props.height || "300px",
         width: props.width || "300px",
       }}
-      class={props.className || createUniqueClassName("big-container")}
+      class={props.class || createUniqueClassName("big-container")}
+    { ...restProps}
     >
       {props.children}
     </div>
   );
 };
 
-export const AutoContainer: ParentComponent<ContainerProps> = function (
-    props
+export const AutoContainer: ParentComponent<ContainerProps> = function (props
+  
   ) {
+    const { class: className, ...restProps } = props;
     return (
       <div
         style={{
@@ -74,8 +80,9 @@ export const AutoContainer: ParentComponent<ContainerProps> = function (
           height: "auto",
           width: "auto",
         }}
-        class={props.className || createUniqueClassName("auto-container")}
-      >
+        class={props.class || createUniqueClassName("auto-container")}
+     { ...restProps}
+     >
         {props.children}
       </div>
     );

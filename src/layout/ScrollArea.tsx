@@ -1,12 +1,12 @@
 import { ParentComponent,JSX } from "solid-js";
 import {Height} from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
-interface ScrollAreaProps {
+interface ScrollAreaProps extends JSX.DOMAttributes<HTMLDivElement> {
   scrollbarWidth?: "none" | "thin";
   msOverflowStyle?: "none" | "auto";
   hideScrollbar?: boolean;
   height?: Height;
-  className?: string;
+  class?: string;
 }
 
 function generateStyle(props:ScrollAreaProps) : JSX.CSSProperties {
@@ -21,9 +21,9 @@ function generateStyle(props:ScrollAreaProps) : JSX.CSSProperties {
   }
 
 export const ScrollArea: ParentComponent<ScrollAreaProps> = function(props) {
-
+  const { class: className, ...restProps } = props;
   return (
-    <div style={generateStyle(props)} class={props.className || createUniqueClassName("scroll-area")}>
+    <div style={generateStyle(props)} class={props.class || createUniqueClassName("scroll-area")} {...restProps}>
       {props.children}
     </div>
   );

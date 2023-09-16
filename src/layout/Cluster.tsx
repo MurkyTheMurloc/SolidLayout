@@ -1,4 +1,4 @@
-import { ParentComponent } from "solid-js";
+import { ParentComponent,JSX } from "solid-js";
 import { Gap,Padding } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 interface ClusterProps {
@@ -7,7 +7,7 @@ interface ClusterProps {
   className?: string;
 }
 
-function generateStyle(props:ClusterProps ): { [key: string]: string } {
+function generateStyle(props:ClusterProps ): JSX.CSSProperties {
   return {
          display: "flex",
         "flex-wrap": "wrap",

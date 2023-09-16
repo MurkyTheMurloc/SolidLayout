@@ -1,4 +1,4 @@
-import {Accessor, JSXElement, onMount, ParentComponent} from "solid-js";
+import {Accessor, JSXElement, onMount, ParentComponent,JSX} from "solid-js";
 import { Gap, Padding } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 import {useAutoBreakPoints} from "../hooks/useResponsiveGrid";
@@ -14,10 +14,10 @@ interface GridProps {
   breakPointLayout: BreakPointLayout,
 }
 
-function generateStyle(props: GridProps, autoGrid:Accessor<string>): { [key: string]: string } {
+function generateStyle(props: GridProps, autoGrid:Accessor<string>):  JSX.CSSProperties {
   return {
     display: "grid",
-    gridTemplateColumns: autoGrid(),
+    "grid-template-columns": autoGrid(),
     padding: `${props.padding}`,
     gap: props.gap || "1rem",
   };

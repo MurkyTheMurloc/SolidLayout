@@ -1,4 +1,4 @@
-import { JSXElement, ParentComponent } from "solid-js";
+import { JSXElement, ParentComponent, JSX } from "solid-js";
 import { Gap,Padding,ScrollBehavior,ScrollPadding,ScrollSnapType,GridAutoFlow,GridAutoColumns,Overflow } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 interface ReelGridProps {
@@ -14,7 +14,7 @@ interface ReelGridProps {
   className?: string;
 }
 
-function generateStyle(props: ReelGridProps): { [key: string]: string } {
+function generateStyle(props: ReelGridProps):  JSX.CSSProperties {
   return {
     display: "grid",
     "grid-auto-flow": props.GridAutoFlow||"column",

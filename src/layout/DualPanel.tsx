@@ -1,5 +1,5 @@
 
-import { JSXElement, ParentComponent } from "solid-js";
+import { JSXElement, ParentComponent,JSX } from "solid-js";
 import { MarginInline,Gap,FlexBasis } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 interface DualPannelProps{
@@ -12,7 +12,7 @@ interface DualPannelProps{
 
 }
 
-function generateStyle(props:DualPannelProps ): { [key: string]:string} {
+function generateStyle(props:DualPannelProps ): JSX.CSSProperties {
   return {
     display: "flex",
     "flex-wrap": "wrap",

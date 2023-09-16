@@ -2,7 +2,7 @@ import {JSX, JSXElement, ParentComponent, children, createEffect} from "solid-js
 import { Gap,Padding } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 
-interface FlexibleGridProps extends JSX.DOMAttributes<HTMLDivElement> {
+interface FlexibleGridProps  extends JSX.HTMLAttributes<HTMLDivElement> {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding

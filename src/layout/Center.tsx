@@ -1,7 +1,7 @@
 import { JSXElement, ParentComponent,JSX } from "solid-js";
 import {createUniqueClassName} from "../helper/helper";
 
-interface CenterProps extends JSX.DOMAttributes<HTMLDivElement> {
+interface CenterProps extends JSX.HTMLAttributes<HTMLDivElement> {
   children: JSXElement | JSXElement[];
   class?: string;
 }

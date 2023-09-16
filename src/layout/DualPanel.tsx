@@ -3,7 +3,7 @@ import { JSXElement, ParentComponent,JSX } from "solid-js";
 import { MarginInline,Gap,FlexBasis } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 
-interface DualPannelProps extends JSX.DOMAttributes<HTMLDivElement>{
+interface DualPannelProps extends JSX.HTMLAttributes<HTMLDivElement>{
   children: [JSXElement, JSXElement];
   gap?: Gap;
   marginInline?: MarginInline;

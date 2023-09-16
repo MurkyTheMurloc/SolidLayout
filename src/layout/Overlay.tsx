@@ -28,12 +28,12 @@ function generateRandomPositiveZindex(name:string=createUniqueClassName("zIndex"
     return `${random}`;
 }
 
-interface MoveToBackGroundProps extends JSX.DOMAttributes<HTMLDivElement> {
+interface MoveToBackGroundProps  extends JSX.HTMLAttributes<HTMLDivElement> {
     name?: string;
     position?: Position;
 }
 
-interface MoveToForeGroundProps extends JSX.DOMAttributes<HTMLDivElement> {
+interface MoveToForeGroundProps  extends JSX.HTMLAttributes<HTMLDivElement>{
     name?: string;
     position?:Position;
 }

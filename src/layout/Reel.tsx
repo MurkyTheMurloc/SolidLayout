@@ -1,7 +1,7 @@
 import { JSXElement, ParentComponent, JSX } from "solid-js";
 import { Gap,Padding,ScrollBehavior,ScrollPadding,ScrollSnapType,GridAutoFlow,GridAutoColumns,Overflow } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
-interface ReelGridProps {
+interface ReelGridProps extends JSX.DOMAttributes<HTMLDivElement> {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding;
@@ -11,7 +11,8 @@ interface ReelGridProps {
   GridAutoFlow?: GridAutoFlow;
   GridAutoColumns?: GridAutoColumns;
   OverFlowX?: Overflow;
-  className?: string;
+  class?: string;
+
 }
 
 function generateStyle(props: ReelGridProps):  JSX.CSSProperties {
@@ -30,8 +31,9 @@ function generateStyle(props: ReelGridProps):  JSX.CSSProperties {
 }
 
 export const ReelGrid: ParentComponent<ReelGridProps> = function(props) {
+  const { class: className, ...restProps } = props;
   return (
-      <div style={generateStyle(props)} class={props.className || createUniqueClassName("reel-grid")}>
+      <div style={generateStyle(props)} class={props.class || createUniqueClassName("reel-grid")} {...restProps}>
         {props.children}
       </div>
   );

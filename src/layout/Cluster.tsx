@@ -1,10 +1,11 @@
 import { ParentComponent,JSX } from "solid-js";
 import { Gap,Padding } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
-interface ClusterProps {
+
+interface ClusterProps extends JSX.DOMAttributes<HTMLDivElement> {
   gap?: Gap;
   padding?: Padding;
-  className?: string;
+  class?: string;
 }
 
 function generateStyle(props:ClusterProps ): JSX.CSSProperties {
@@ -17,8 +18,9 @@ function generateStyle(props:ClusterProps ): JSX.CSSProperties {
 }
 
 export const Cluster: ParentComponent<ClusterProps> = function(props) {
+    const { class: className, ...restProps } = props;
   return (
-      <div style={generateStyle(props)}  class={props.className||createUniqueClassName("cluster")}>
+      <div style={generateStyle(props)}  class={props.class||createUniqueClassName("cluster")} {...restProps} >
         {props.children}
       </div>
   );

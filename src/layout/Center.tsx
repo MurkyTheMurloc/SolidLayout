@@ -1,8 +1,9 @@
 import { JSXElement, ParentComponent,JSX } from "solid-js";
 import {createUniqueClassName} from "../helper/helper";
-interface CenterProps {
+
+interface CenterProps extends JSX.DOMAttributes<HTMLDivElement> {
   children: JSXElement | JSXElement[];
-  className?: string;
+  class?: string;
 }
 
 function generateStyle(): JSX.CSSProperties {
@@ -15,18 +16,21 @@ function generateStyle(): JSX.CSSProperties {
 }
 
 export const Center: ParentComponent<CenterProps> = function(props) {
+  const { class: className, ...restProps } = props;
   return (
-    <div style={generateStyle()} class={props.className||createUniqueClassName("center")}>
+    <div style={generateStyle()} class={props.class||createUniqueClassName("center")} {...restProps}>
       {props.children}
     </div>
   );
 }
 
 export const Left: ParentComponent<CenterProps> = function (props) {
+  const { class: className, ...restProps } = props;
   return (
     <div
       style={{ ...generateStyle(), "justify-content": "flex-start" }}
-      class={props.className || createUniqueClassName("left")}
+      class={props.class || createUniqueClassName("left")}
+      {...restProps}
     >
       {props.children}
     </div>
@@ -34,10 +38,12 @@ export const Left: ParentComponent<CenterProps> = function (props) {
 };
 
 export const Right: ParentComponent<CenterProps> = function (props) {
+  const { class: className, ...restProps } = props;
   return (
     <div
       style={{ ...generateStyle(), "justify-content": "flex-end" }}
-      class={props.className || createUniqueClassName("right")}
+      class={props.class || createUniqueClassName("right")}
+      {...restProps}
     >
       {props.children}
     </div>
@@ -45,10 +51,13 @@ export const Right: ParentComponent<CenterProps> = function (props) {
 };
 
 export const Apart: ParentComponent<CenterProps> = function (props) {
+  const { class: className, ...restProps } = props;
   return (
     <div
+  
       style={{ ...generateStyle(), "justify-content": "space-between" }}
-      class={props.className || createUniqueClassName("apart")}
+      class={props.class|| createUniqueClassName("apart")}
+      {...restProps}
     >
       {props.children}
     </div>

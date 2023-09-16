@@ -2,7 +2,7 @@ import {Component,JSX } from "solid-js";
 import {createUniqueClassName} from "../helper/helper";
 import { Size } from "../types/css_types";
 
-interface SpaceProps extends JSX.DOMAttributes<HTMLDivElement> {
+interface SpaceProps  extends JSX.HTMLAttributes<HTMLDivElement> {
   height?: Size;
     width?: Size;
 }

@@ -4,7 +4,7 @@ import {createUniqueClassName} from "../helper/helper";
 import {useAutoBreakPoints} from "../hooks/useResponsiveGrid";
 import {BreakPointLayout} from "../types/break_point_layout";
 
-interface GridProps extends JSX.DOMAttributes<HTMLDivElement> {
+interface GridProps  extends JSX.HTMLAttributes<HTMLDivElement> {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding;

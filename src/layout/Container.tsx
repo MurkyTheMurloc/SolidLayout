@@ -1,8 +1,8 @@
-import { JSXElement, ParentComponent, JSX } from "solid-js";
+import { JSXElement, ParentComponent, JSX} from "solid-js";
 import { Gap, Padding, Size } from "../types/css_types";
 import { createUniqueClassName } from "../helper/helper";
 
-interface ContainerProps extends JSX.DOMAttributes<HTMLDivElement> {
+interface ContainerProps extends JSX.HTMLAttributes<HTMLDivElement>   {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding;

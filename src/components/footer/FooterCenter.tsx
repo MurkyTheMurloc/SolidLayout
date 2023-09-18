@@ -1,6 +1,6 @@
-import { ParentComponent } from "solid-js";
+import { ParentComponent,JSX } from "solid-js";
 
-function generateAppShellFooterCenterStyle():{[key:string]:string}{
+function generateAppShellFooterCenterStyle():JSX.CSSProperties{
     return {
         "grid-area": "footer-center",
     }

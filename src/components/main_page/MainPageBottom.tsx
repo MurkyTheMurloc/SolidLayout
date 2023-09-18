@@ -1,6 +1,6 @@
-import { ParentComponent } from "solid-js";
+import {JSX, ParentComponent } from "solid-js";
 
-function generateAppShellMainPageBottomStyle():{[key:string]:string}{
+function generateAppShellMainPageBottomStyle():JSX.CSSProperties{
     return {
         "grid-area": "app-shell-main-page-container-bottom",
     }

@@ -1,7 +1,7 @@
-import { ParentComponent } from "solid-js";
+import {JSX, ParentComponent } from "solid-js";
 
 
-function generateAppShellHeaderContainerStyle():{[key:string]:string}{
+function generateAppShellHeaderContainerStyle(): JSX.CSSProperties{
     return {
         "grid-area": "header-container",
          display: "grid",

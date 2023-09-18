@@ -1,4 +1,3 @@
-
 export enum BREAKPOINT_POSITION{
     TOP_LEFT ="header-left",
     TOP_RIGHT = "header-right",

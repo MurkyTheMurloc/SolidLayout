@@ -1,6 +1,6 @@
-import {Accessor, ParentComponent, Show, JSXElement, Switch, Match, onMount, JSX, Component} from "solid-js";
-import { useResponsiveLeftBarGrid, useResponsiveRightBarGrid } from "../hooks/useResponsiveGrid.ts";
-import { BreakPointPosition, StartPosition } from "../types/gridPosition.ts";
+import {Accessor, ParentComponent, Show, JSXElement, Switch, Match, onMount, JSX} from "solid-js";
+import { useResponsiveLeftBarGrid, useResponsiveRightBarGrid } from "../hooks/useResponsiveGrid";
+import { BreakPointPosition, StartPosition } from "../types/gridPosition";
 import { HeaderContainer } from "../components/header/HeaderContainer";
 import { HeaderCenter} from "../components/header/HeaderCenter";
 import { HeaderLeft } from "../components/header/HeaderLeft";

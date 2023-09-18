@@ -1,7 +1,7 @@
-import { ParentComponent } from "solid-js";
+import {JSX, ParentComponent} from "solid-js";
 
 
-function generateAppShellMainStyle():{[key:string]:string}{
+function generateAppShellMainStyle():JSX.CSSProperties{
     return {
         "grid-area": "main-center-container",
         display: "grid",

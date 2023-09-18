@@ -90,7 +90,7 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
             </LeftBar>
             </Show>
             <Show when={getLeftBarBreakPoint()==="bar-right"}>
-            <RightBar getGridArea={getLeftBarBreakPoint}>
+            <RightBar getGridArea={getRightBarBreakPoint}>
                 {props.leftBarComponent}
             </RightBar>
             </Show>

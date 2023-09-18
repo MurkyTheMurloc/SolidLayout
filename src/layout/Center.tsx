@@ -1,5 +1,5 @@
 import { JSXElement, ParentComponent,JSX } from "solid-js";
-import {createUniqueClassName} from "../helper/helper.ts";
+import {createUniqueClassName} from "../helper/helper";
 
 interface CenterProps extends JSX.DOMAttributes<HTMLDivElement>  {
   children: JSXElement | JSXElement[];

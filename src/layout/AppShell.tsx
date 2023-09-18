@@ -1,20 +1,20 @@
-import {Accessor, ParentComponent, Show, JSXElement, Switch, Match, onMount, JSX, Component} from "solid-js";
-import { useResponsiveLeftBarGrid, useResponsiveRightBarGrid } from "../hooks/useResponsiveGrid.ts";
-import { BreakPointPosition, StartPosition } from "../types/gridPosition.ts";
-import { HeaderContainer } from "../components/header/HeaderContainer.tsx";
-import { HeaderCenter} from "../components/header/HeaderCenter.tsx";
-import { HeaderLeft } from "../components/header/HeaderLeft.tsx";
-import { HeaderRight } from "../components/header/HeaderRight.tsx";
-import { FooterContainer } from "../components/footer/FooterContainer.tsx";
-import { FooterCenter } from "../components/footer/FooterCenter.tsx";
-import { FooterLeft } from "../components/footer/FooterLeft.tsx";
-import { FooterRight } from "../components/footer/FooterRight.tsx";
-import { PageCenterContainer } from "../components/main_page/PageCenterContainer.tsx";
-import { LeftBar } from "../components/main_page/LeftBar.tsx";
-import { RightBar } from "../components/main_page/RightBar.tsx";
-import { MainPage } from "../components/main_page/MainPage.tsx";
-import { MainPageTop } from "../components/main_page/MainPageTop.tsx";
-import { MainPageBottom } from "../components/main_page/MainPageBottom.tsx"
+import {Accessor, ParentComponent, Show, JSXElement, Switch, Match, onMount, JSX} from "solid-js";
+import { useResponsiveLeftBarGrid, useResponsiveRightBarGrid } from "../hooks/useResponsiveGrid";
+import { BreakPointPosition, StartPosition } from "../types/gridPosition";
+import { HeaderContainer } from "../components/header/HeaderContainer";
+import { HeaderCenter} from "../components/header/HeaderCenter";
+import { HeaderLeft } from "../components/header/HeaderLeft";
+import { HeaderRight } from "../components/header/HeaderRight";
+import { FooterContainer } from "../components/footer/FooterContainer";
+import { FooterCenter } from "../components/footer/FooterCenter";
+import { FooterLeft } from "../components/footer/FooterLeft";
+import { FooterRight } from "../components/footer/FooterRight";
+import { PageCenterContainer } from "../components/main_page/PageCenterContainer";
+import { LeftBar } from "../components/main_page/LeftBar";
+import { RightBar } from "../components/main_page/RightBar";
+import { MainPage } from "../components/main_page/MainPage";
+import { MainPageTop } from "../components/main_page/MainPageTop";
+import { MainPageBottom } from "../components/main_page/MainPageBottom"
 
 
 function generateAppShellContainerStyle(): JSX.CSSProperties{

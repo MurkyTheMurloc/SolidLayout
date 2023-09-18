@@ -1,6 +1,6 @@
 import { JSXElement, ParentComponent, JSX } from "solid-js";
-import { Gap,Padding,ScrollBehavior,ScrollPadding,ScrollSnapType,GridAutoFlow,GridAutoColumns,Overflow } from "../types/css_types.ts";
-import {createUniqueClassName} from "../helper/helper.ts";
+import { Gap,Padding,ScrollBehavior,ScrollPadding,ScrollSnapType,GridAutoFlow,GridAutoColumns,Overflow } from "../types/css_types";
+import {createUniqueClassName} from "../helper/helper";
 interface ReelGridProps extends JSX.DOMAttributes<HTMLDivElement>  {
   children: JSXElement | JSXElement[];
   gap?: Gap;

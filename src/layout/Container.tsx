@@ -1,6 +1,6 @@
 import { JSXElement, ParentComponent, JSX} from "solid-js";
-import { Gap, Padding, Size } from "../types/css_types.ts";
-import { createUniqueClassName } from "../helper/helper.ts";
+import { Gap, Padding, Size } from "../types/css_types";
+import { createUniqueClassName } from "../helper/helper";
 
 interface ContainerProps extends JSX.DOMAttributes<HTMLDivElement>   {
   children: JSXElement | JSXElement[];
@@ -24,6 +24,7 @@ export const SmallContainer: ParentComponent<ContainerProps> = function (
         width: props.width || "100px",
       }}
       class={props.class || createUniqueClassName("small-container")}
+    { ...restProps}
    >
       {props.children}
     </div>

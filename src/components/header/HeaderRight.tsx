@@ -1,4 +1,6 @@
-import {JSX, ParentComponent} from "solid-js";
+
+import {JSX, ParentComponent } from "solid-js";
+
 
 
 function generateAppShellHeaderRightStyle():JSX.CSSProperties{

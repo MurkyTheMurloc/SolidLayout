@@ -1,4 +1,5 @@
-import {JSX, ParentComponent} from "solid-js";
+
+import {JSX, ParentComponent } from "solid-js";
 
 function generateAppShellFooterLeftStyle():JSX.CSSProperties{
     return {

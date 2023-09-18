@@ -1,8 +1,8 @@
 import {Accessor, JSXElement, onMount, ParentComponent,JSX} from "solid-js";
-import { Gap, Padding } from "../types/css_types.ts";
-import {createUniqueClassName} from "../helper/helper.ts";
-import {useAutoBreakPoints} from "../hooks/useResponsiveGrid.ts";
-import {BreakPointLayout} from "../types/break_point_layout.ts";
+import { Gap, Padding } from "../types/css_types";
+import {createUniqueClassName} from "../helper/helper";
+import {useAutoBreakPoints} from "../hooks/useResponsiveGrid";
+import {BreakPointLayout} from "../types/break_point_layout";
 
 interface GridProps  extends JSX.DOMAttributes<HTMLDivElement>  {
   children: JSXElement | JSXElement[];

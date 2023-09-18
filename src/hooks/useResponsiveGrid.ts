@@ -1,7 +1,7 @@
 
 import { Accessor, createSignal, onCleanup } from "solid-js";
-import { BreakPointPosition,StartPosition } from "../types/gridPosition.ts";
-import {BreakPointLayout} from "../types/break_point_layout.ts";
+import { BreakPointPosition,StartPosition } from "../types/gridPosition";
+import {BreakPointLayout} from "../types/break_point_layout";
 
 function useResponsiveGrid(
   position: BreakPointPosition,

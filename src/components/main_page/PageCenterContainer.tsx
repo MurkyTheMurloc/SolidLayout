@@ -1,4 +1,5 @@
-import {JSX, ParentComponent} from "solid-js";
+
+import { ParentComponent,JSX } from "solid-js";
 
 function generateAppShellMainContainerStyle():JSX.CSSProperties{
     return {

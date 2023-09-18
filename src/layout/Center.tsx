@@ -1,5 +1,5 @@
 import { JSXElement, ParentComponent,JSX } from "solid-js";
-import {createUniqueClassName} from "../helper/helper";
+import {createUniqueClassName} from "../helper/helper.ts";
 
 interface CenterProps extends JSX.DOMAttributes<HTMLDivElement>  {
   children: JSXElement | JSXElement[];
@@ -54,7 +54,7 @@ export const Apart: ParentComponent<CenterProps> = function (props) {
   const { class: className, ...restProps } = props;
   return (
     <div
-  
+
       style={{ ...generateStyle(), "justify-content": "space-between" }}
       class={props.class|| createUniqueClassName("apart")}
       {...restProps}

@@ -1,6 +1,6 @@
 import { ParentComponent,JSX } from "solid-js";
-import { Gap,Padding } from "../types/css_types";
-import {createUniqueClassName} from "../helper/helper";
+import { Gap,Padding } from "../types/css_types.ts";
+import {createUniqueClassName} from "../helper/helper.ts";
 
 interface ClusterProps extends JSX.DOMAttributes<HTMLDivElement> {
   gap?: Gap;

@@ -1,6 +1,6 @@
 import { ParentComponent,JSX } from "solid-js";
-import { Gap,Padding,Columns } from "../types/css_types";
-import {createUniqueClassName} from "../helper/helper";
+import { Gap,Padding,Columns } from "../types/css_types.ts";
+import {createUniqueClassName} from "../helper/helper.ts";
 
 interface AutoGridProps  extends JSX.DOMAttributes<HTMLDivElement>  {
 

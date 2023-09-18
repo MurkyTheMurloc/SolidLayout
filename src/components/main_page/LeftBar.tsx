@@ -1,5 +1,7 @@
+
 import { ParentComponent,Accessor, JSX } from "solid-js";
 import{BreakPointPosition,StartPosition} from "../../types/gridPosition"
+
 
 
 function generateAppShellLeftBarStyle(getGridArea:Accessor<BreakPointPosition|StartPosition>):JSX.CSSProperties{

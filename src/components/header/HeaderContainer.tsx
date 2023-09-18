@@ -1,7 +1,9 @@
+
 import {JSX, ParentComponent } from "solid-js";
 
 
 function generateAppShellHeaderContainerStyle(): JSX.CSSProperties{
+
     return {
         "grid-area": "header-container",
          display: "grid",

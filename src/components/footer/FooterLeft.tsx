@@ -1,8 +1,11 @@
+
 import {JSX, ParentComponent } from "solid-js";
+
 
 function generateAppShellHeaderStyle():JSX.CSSProperties{
     return {
         "grid-area": "footer-left",
+
     }
 }
 export const FooterLeft:ParentComponent = function (props){

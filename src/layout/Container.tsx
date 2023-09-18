@@ -1,6 +1,6 @@
 import { JSXElement, ParentComponent, JSX} from "solid-js";
-import { Gap, Padding, Size } from "../types/css_types";
-import { createUniqueClassName } from "../helper/helper";
+import { Gap, Padding, Size } from "../types/css_types.ts";
+import { createUniqueClassName } from "../helper/helper.ts";
 
 interface ContainerProps extends JSX.DOMAttributes<HTMLDivElement>   {
   children: JSXElement | JSXElement[];
@@ -69,7 +69,7 @@ export const LargeContainer: ParentComponent<ContainerProps> = function (props) 
 };
 
 export const AutoContainer: ParentComponent<ContainerProps> = function (props
-  
+
   ) {
     const { class: className, ...restProps } = props;
     return (

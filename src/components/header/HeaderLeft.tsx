@@ -1,7 +1,7 @@
-import { ParentComponent } from "solid-js";
+import { ParentComponent, JSX } from "solid-js";
 
 
-function generateAppShellHeaderLeftStyle ():{[key:string]:string}{
+function generateAppShellHeaderLeftStyle (): JSX.CSSProperties{
     return {
         "grid-area": "header-left",
     }

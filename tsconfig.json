@@ -24,10 +24,11 @@
     "noFallthroughCasesInSwitch": true,
     "types": ["solid-js", "vite/client", "node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["src",
+  "include": [
+    "src",
     "src/index.tsx"
   ],
   "outDir": "dist",
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "references": [{ "path": "./tsconfig.node.json"}],
     "exclude": ["node_modules", "dist"]
 }

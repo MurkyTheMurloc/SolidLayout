@@ -1,11 +1,12 @@
-import { ParentComponent } from "solid-js";
+import {JSX, ParentComponent} from "solid-js";
 
-function generateAppShellHeaderStyle():{[key:string]:string}{
+function generateAppShellHeaderStyle():JSX.CSSProperties{
     return {
-        "grid-area": "footer",
+         "grid-area": "footer",
             display: "grid",
-            "grid-area-template": `"footer-left footer-center footer-right"`,
+            "grid-template-areas": `"footer-left footer-center footer-right"`,
             "grid-template-columns": "auto 1fr auto",
+            "grid-gap": "1rem",
 
     }
 }

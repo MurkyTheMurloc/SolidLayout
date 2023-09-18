@@ -24,6 +24,7 @@ export const SmallContainer: ParentComponent<ContainerProps> = function (
         width: props.width || "100px",
       }}
       class={props.class || createUniqueClassName("small-container")}
+    { ...restProps}
    >
       {props.children}
     </div>
@@ -69,7 +70,7 @@ export const LargeContainer: ParentComponent<ContainerProps> = function (props) 
 };
 
 export const AutoContainer: ParentComponent<ContainerProps> = function (props
-  
+
   ) {
     const { class: className, ...restProps } = props;
     return (

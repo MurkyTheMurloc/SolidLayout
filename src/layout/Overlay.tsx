@@ -1,7 +1,7 @@
 import type {ParentComponent,JSX } from "solid-js";
 import { children, createEffect,  } from "solid-js";
 
-import {createUniqueClassName} from "../helper/helper.ts";
+import {createUniqueClassName} from "../helper/helper";
 
 const trackZindexBackground: {[key:string]:string} = {};
 const trackZindexForeground: {[key:string]:string} = {};

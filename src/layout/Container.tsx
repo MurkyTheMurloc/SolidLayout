@@ -24,6 +24,7 @@ export const SmallContainer: ParentComponent<ContainerProps> = function (
         width: props.width || "100px",
       }}
       class={props.class || createUniqueClassName("small-container")}
+    { ...restProps}
    >
       {props.children}
     </div>

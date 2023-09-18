@@ -6,9 +6,7 @@ function generateAppShellHeaderStyle():JSX.CSSProperties{
     return {
          "grid-area": "footer",
             display: "grid",
-
-            "grid-template-areas": "footer-left footer-center footer-right",
-
+            "grid-template-areas": `"footer-left footer-center footer-right"`,
             "grid-template-columns": "auto 1fr auto",
             "grid-gap": "1rem",
 

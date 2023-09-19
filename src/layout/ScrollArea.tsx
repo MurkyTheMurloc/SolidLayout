@@ -13,7 +13,7 @@ function generateStyle(props:ScrollAreaProps) : JSX.CSSProperties {
     return {
       position: "relative",
       "overflow-y": "auto",
-      height: props.height || "100vh",
+       height: props.height || "100%",
       "justify-items": "space-evenly",
       "scrollbar-width": props.hideScrollbar ? "none" : "thin",
       "-ms-overflow-style": props.hideScrollbar ? "none" : "auto",

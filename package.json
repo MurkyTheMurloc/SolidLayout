@@ -1,7 +1,7 @@
 {
   "name": "solid-layout",
   "private": false,
-  "version": "1.4.6",
+  "version": "1.4.7",
 
   "source": "./dist/source/index.jsx",
   "main": "./dist/source/index.jsx",

@@ -36,17 +36,17 @@ function generateStyle(props: ReelGridProps,FloatType:Accessor<"column"|"rows">)
     "-ms-scrollbar-arrow-color": "transparent",
     "-ms-scrollbar-face-color": "transparent",
     "-ms-scrollbar-highlight-color": "transparent",
-  }
+}
 }
 
 export const ReelGrid: ParentComponent<ReelGridProps> = function(props) {
   const [flotType , setFlotType] = createSignal<"rows"|"columns">(props.gridAutoFlow);
   onMount(()=>{
     if (props.autoBreakPoints??true){
-      createEffect(()=>{
-        console.log(useresponsiveReel())
-        setFlotType(useresponsiveReel())
-      })
+       createEffect(()=>{
+         console.log(useresponsiveReel())
+         setFlotType(useresponsiveReel())
+       })
 
     }
   })

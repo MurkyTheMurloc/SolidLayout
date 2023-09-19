@@ -1,5 +1,5 @@
 
-import {JSX, ParentComponent, Accessor} from "solid-js";
+import {JSX, ParentComponent, createSignal, Accessor} from "solid-js";
 
 
 function generateAppShellMainStyle(gridGap:Accessor<string>):JSX.CSSProperties{

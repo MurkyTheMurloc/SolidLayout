@@ -2,6 +2,7 @@
 import { Accessor, createSignal, onCleanup } from "solid-js";
 import { BreakPointPosition,StartPosition } from "../types/gridPosition";
 import {BreakPointLayout} from "../types/break_point_layout";
+import {BREAKPOINT_POSITION} from "../enums/break_point_enum";
 
 function useResponsiveGrid(
   position: BreakPointPosition,
@@ -33,11 +34,11 @@ function useResponsiveGrid(
   return getBreakPoints;
 }
 
-function useResponsiveLeftBarGrid(breakPoint:number=757, breakPointPosition:BreakPointPosition="header-right", startPosition:StartPosition="bar-left"){
+function useResponsiveLeftBarGrid( breakPointPosition:BreakPointPosition=BREAKPOINT_POSITION.TOP_RIGHT,breakPoint:number=757, startPosition:StartPosition="bar-left"){
   return useResponsiveGrid(breakPointPosition, breakPoint,startPosition)
 }
 
-function useResponsiveRightBarGrid(breakPoint:number=757, breakPointPosition:BreakPointPosition="app-shell-main-page-container-top", startPosition:StartPosition="bar-right"){
+function useResponsiveRightBarGrid( breakPointPosition:BreakPointPosition=BREAKPOINT_POSITION.MAIN_TOP,breakPoint:number=757, startPosition:StartPosition="bar-right"){
   return useResponsiveGrid(breakPointPosition, breakPoint,startPosition)
 }
 
@@ -115,7 +116,6 @@ function useAutoBreakPoints(autoFill:boolean=true, minColumnWidth:number=200,bre
 
 }
 
-
 function useresponsiveReel(): "rows" | "column" {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
   const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
@@ -123,25 +123,25 @@ function useresponsiveReel(): "rows" | "column" {
   const updateWindowWidth = () => {
     setWindowWidth(window.innerWidth);
   };
-  const updateWindowHeight = () => {
+    const updateWindowHeight = () => {
     setWindowHeight(window.innerHeight);
-  }
+    }
 
   window.addEventListener("resize", updateWindowWidth);
-  window.addEventListener("resize", updateWindowHeight);
+    window.addEventListener("resize", updateWindowHeight);
 
   // Clean up the event listener when the component unmounts
   onCleanup(() => {
     window.removeEventListener("resize", updateWindowWidth);
-    window.removeEventListener("resize", updateWindowHeight);
+        window.removeEventListener("resize", updateWindowHeight);
   });
 
-  if(windowWidth()>windowHeight()){
-    return "rows";
-  }
-  return "column";
+    if(windowWidth()>windowHeight()){
+      return "rows";
+    }
+    return "column";
 
-};
+  };
 
 
 export { useResponsiveLeftBarGrid, useResponsiveRightBarGrid,useAutoBreakPoints,useresponsiveReel };

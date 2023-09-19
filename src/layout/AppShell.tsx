@@ -20,17 +20,18 @@ import {BREAKPOINT_POSITION} from "../enums/break_point_enum";
 
 
 function generateAppShellContainerStyle(): JSX.CSSProperties{
-    return {
+return {
 
-        display: "grid",
-        "grid-template-areas": `"header-container header-container header-container"
+    display: "grid",
+   "grid-template-areas": `"header-container header-container header-container"
                             "main-container main-container main-container"
                             "footer footer footer"`,
 
-        "grid-template-rows": "auto 1fr auto",
-        "grid-gap": "0.5rem",
+    "grid-template-rows": "auto 1fr auto",
+    "grid-gap": "0.5rem",
+    overflow: "auto",
 
-    }
+}
 
 }
 
@@ -51,7 +52,7 @@ interface AppShellProps {
 
 
 export const AppShell: ParentComponent<AppShellProps>=  function (props) {
-    const [gridGap, setGridGap] = createSignal("0rem");
+   const [gridGap, setGridGap] = createSignal("0rem");
     const [getLeftBarBreakPoint, setLeftBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-left");
     const [getRightBarBreakPoint, setRightBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-right");
     if(props.autoBreakPoints??true){
@@ -75,81 +76,81 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
                 <HeaderLeft>
                     {props.leftHeaderComponent}
 
-                    <Show when={getLeftBarBreakPoint()==="header-left" && getRightBarBreakPoint()!== "header-left"}>
-                        {props.bugerMenuComponent}
-                    </Show>
+            <Show when={getLeftBarBreakPoint()==="header-left" && getRightBarBreakPoint()!== "header-left"}>
+               {props.bugerMenuComponent}
+            </Show>
                 </HeaderLeft>
-                <HeaderCenter>
-                    {props.mainHeaderComponent}
-                    <Show when={getLeftBarBreakPoint()==="header-center" && getRightBarBreakPoint()!== "header-center"}>
-                        {props.bugerMenuComponent}
-                    </Show>
-                </HeaderCenter>
-                <HeaderRight>
+           <HeaderCenter>
+                {props.mainHeaderComponent}
+                <Show when={getLeftBarBreakPoint()==="header-center" && getRightBarBreakPoint()!== "header-center"}>
+               {props.bugerMenuComponent}
+            </Show>
+           </HeaderCenter>
+              <HeaderRight>
                     {props.rightHeaderComponent}
-                    <Show when={getLeftBarBreakPoint()==="header-right" && getRightBarBreakPoint()!== "header-right"}>
-                        {props.bugerMenuComponent}
-                    </Show>
-                </HeaderRight>
+            <Show when={getLeftBarBreakPoint()==="header-right" && getRightBarBreakPoint()!== "header-right"}>
+                {props.bugerMenuComponent}
+            </Show>
+            </HeaderRight>
             </HeaderContainer>
             <PageCenterContainer>
                 <Show when={getLeftBarBreakPoint()==="bar-left"}>
-                    <LeftBar getGridArea={getLeftBarBreakPoint}>
-                        {props.leftBarComponent}
-                    </LeftBar>
+            <LeftBar getGridArea={getLeftBarBreakPoint}>
+                {props.leftBarComponent}
+            </LeftBar>
+            </Show>
+            <Show when={getRightBarBreakPoint()==="bar-right"} keyed>
+            <RightBar getGridArea={getRightBarBreakPoint}>
+                {props.rightBarComponent}
+            </RightBar>
+            </Show>
+            <MainPage gridGap={gridGap}>
+                <MainPageCenter>
+
+                {props.children}
+                </MainPageCenter>
+                <Show when={getLeftBarBreakPoint()=== ("app-shell-main-page-container-top" || "app-shell-main-page-container-bottom") || getRightBarBreakPoint()===("app-shell-main-page-container-bottom" ||"app-shell-main-page-container-top")}>
+                <Switch>
+                <Match when={getRightBarBreakPoint()==="app-shell-main-page-container-top" && getLeftBarBreakPoint() !== "app-shell-main-page-container-top"}>
+                <MainPageTop>
+                    {props.rightBarComponent}
+                </MainPageTop>
+                </Match>
+                <Match when={getLeftBarBreakPoint()==="app-shell-main-page-container-top" }>
+                <MainPageTop>
+                    {props.leftBarComponent}
+                </MainPageTop>
+                </Match>
+                <Match when={getLeftBarBreakPoint()==="app-shell-main-page-container-bottom" && getRightBarBreakPoint() !=="app-shell-main-page-container-bottom"}>
+                <MainPageBottom>
+                    {props.leftBarComponent}
+                </MainPageBottom>
+
+                </Match>
+                <Match when={getRightBarBreakPoint()==="app-shell-main-page-container-bottom" && getLeftBarBreakPoint() !== "app-shell-main-page-container-bottom"}>
+                 <MainPageBottom>
+                    {props.rightBarComponent}
+                </MainPageBottom>
+                </Match>
+                </Switch>
+
                 </Show>
-                <Show when={getRightBarBreakPoint()==="bar-right"} keyed>
-                    <RightBar getGridArea={getRightBarBreakPoint}>
-                        {props.rightBarComponent}
-                    </RightBar>
-                </Show>
-                <MainPage gridGap={gridGap}>
-                    <MainPageCenter>
 
-                        {props.children}
-                    </MainPageCenter>
-                    <Show when={getLeftBarBreakPoint()=== ("app-shell-main-page-container-top" || "app-shell-main-page-container-bottom") || getRightBarBreakPoint()===("app-shell-main-page-container-bottom" ||"app-shell-main-page-container-top")}>
-                        <Switch>
-                            <Match when={getRightBarBreakPoint()==="app-shell-main-page-container-top" && getLeftBarBreakPoint() !== "app-shell-main-page-container-top"}>
-                                <MainPageTop>
-                                    {props.rightBarComponent}
-                                </MainPageTop>
-                            </Match>
-                            <Match when={getLeftBarBreakPoint()==="app-shell-main-page-container-top" }>
-                                <MainPageTop>
-                                    {props.leftBarComponent}
-                                </MainPageTop>
-                            </Match>
-                            <Match when={getLeftBarBreakPoint()==="app-shell-main-page-container-bottom" && getRightBarBreakPoint() !=="app-shell-main-page-container-bottom"}>
-                                <MainPageBottom>
-                                    {props.leftBarComponent}
-                                </MainPageBottom>
-
-                            </Match>
-                            <Match when={getRightBarBreakPoint()==="app-shell-main-page-container-bottom" && getLeftBarBreakPoint() !== "app-shell-main-page-container-bottom"}>
-                                <MainPageBottom>
-                                    {props.rightBarComponent}
-                                </MainPageBottom>
-                            </Match>
-                        </Switch>
-
-                    </Show>
-
-                </MainPage>
+            </MainPage>
 
             </PageCenterContainer>
 
             <FooterContainer>
 
-                <FooterLeft>
-                    {props.leftFooterComponent}
+            <FooterLeft>
+                {props.leftFooterComponent}
                 </FooterLeft>
                 <FooterCenter>
                     {props.mainFooterComponent}
-                </FooterCenter>
-                <FooterRight>
-                    {props.rightFooterComponent}
-                </FooterRight>
+                    </FooterCenter>
+                    <FooterRight>
+                        {props.rightFooterComponent}
+                    </FooterRight>
             </FooterContainer>
         </div>
     )

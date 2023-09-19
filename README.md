@@ -6,6 +6,11 @@ From the perspective of a backend developer who is not a CSS wizard, layouting i
 The goal of this library is to provide a solution to this pain point by offering minimal, lightweight, and highly customizable layout components. These components are designed to simplify the process of creating basic layouts and user interfaces, allowing backend developers like me to focus on the core functionality of their applications when they need to do some Frontend stuff ore just like to tinker around.
 
 
+## Disclaimer
+
+this package is still experimental and under development. I will try to get it to a stable version as soon as possible.
+I am happy about every feedback and every contribution. If you have any ideas for improvement or want to contribute, please feel free to contact me.
+
 ## Features
 
 - Minimal, lightweight, and highly customizable

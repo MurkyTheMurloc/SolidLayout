@@ -5,6 +5,7 @@ import { ParentComponent,JSX } from "solid-js";
 function generateAppShellFooterCenterStyle():JSX.CSSProperties{
     return {
         "grid-area": "footer-center",
+        "min-width": "107px",
     }
 }
 export const FooterCenter:ParentComponent = function (props){

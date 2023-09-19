@@ -60,8 +60,8 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
     if(props.autoBreakPoints??true){
         onMount(()=>{
             createEffect(() => {
-                useResponsiveLeftBarGrid(setLeftBarBreakPoint, setGridGap, props.leftBarBreakPoint)
-                useResponsiveRightBarGrid(setRightBarBreakPoint, setGridGap, props.rightBarBreakPoint)
+                useResponsiveLeftBarGrid(setLeftBarBreakPoint, setGridGap, appShell, props.leftBarBreakPoint)
+                useResponsiveRightBarGrid(setRightBarBreakPoint, setGridGap, appShell, props.rightBarBreakPoint)
             })
         })
 

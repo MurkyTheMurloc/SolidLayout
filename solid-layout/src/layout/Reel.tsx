@@ -40,12 +40,6 @@ function generateStyle(props: ReelGridProps,FloatType:Accessor<"column"|"rows">,
     padding: props.padding || "1rem",
     gap: props.gap || "1rem",
     "overflow-y": props.showScrollbar ? "scroll" : "hidden",
-    "-ms-scrollbar-base-color": "transparent",
-    "-ms-scrollbar-track-color": "transparent",
-    "-ms-scrollbar-darkshadow-color": "transparent",
-    "-ms-scrollbar-arrow-color": "transparent",
-    "-ms-scrollbar-face-color": "transparent",
-    "-ms-scrollbar-highlight-color": "transparent",
 }
 }
 

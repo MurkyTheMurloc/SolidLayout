@@ -153,7 +153,7 @@ function useresponsiveReel(setRowType:Setter<GridAutoFlow>, setColumnWidth:Sette
      case  switchCondition:
        if (windowWidth() <= breakPoint) {
          setRowType("column");
-         setColumnWidth("45%");
+         setColumnWidth("max-content");
          return;
        }
        if(windowWidth()>windowHeight()){

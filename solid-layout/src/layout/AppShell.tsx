@@ -22,13 +22,13 @@ import {BreakPointStore} from "../components/stores/break_point_store.tsx";
 
 function generateAppShellContainerStyle(): JSX.CSSProperties{
 return {
-
+    height: "100%",
     display: "grid",
-   "grid-template-areas": `"header-container header-container header-container"
-                            "main-container main-container main-container"
-                            "footer footer footer"`,
+   "grid-template-areas": `"header-container"
+                            "main-container"
+                            "footer"`,
 
-    "grid-template-rows": "auto 1fr auto",
+    "grid-template-rows": "auto minmax(0,1fr) auto",
     "grid-gap": "0.5rem",
 
 
@@ -59,10 +59,10 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
     const [getRightBarBreakPoint, setRightBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-right");
     if(props.autoBreakPoints??true){
         onMount(()=>{
-                createEffect(()=> {
-                    useResponsiveLeftBarGrid(setLeftBarBreakPoint, setGridGap, props.leftBarBreakPoint)
-                    useResponsiveRightBarGrid(setRightBarBreakPoint, setGridGap, props.rightBarBreakPoint)
-                })
+              createEffect(()=> {
+                  useResponsiveLeftBarGrid(setLeftBarBreakPoint, setGridGap, props.leftBarBreakPoint)
+                  useResponsiveRightBarGrid(setRightBarBreakPoint, setGridGap, props.rightBarBreakPoint)
+              })
         })
 
     }

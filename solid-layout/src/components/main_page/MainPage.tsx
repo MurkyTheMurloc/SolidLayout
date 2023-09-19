@@ -6,10 +6,11 @@ function generateAppShellMainStyle(gridGap:Accessor<string>):JSX.CSSProperties{
     return {
         "grid-area": "main-center-container",
         display: "grid",
+        "grid-template-columns": "minmax(0,1fr)",
         "grid-template-areas": `"app-shell-main-page-container-top"
                                 "app-shell-main-page-container-center"
                                 "app-shell-main-page-container-bottom"`,
-        "grid-template-rows": "auto 1fr auto",
+        "grid-template-rows": "auto minmax(0,1fr) auto",
 
         "grid-gap": gridGap(),
 

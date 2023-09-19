@@ -1,0 +1,21 @@
+{
+  "trailingComma": "es5",
+  "indentStyle": "space",
+  "tabWidth": 4,
+  "semi": true,
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "arrowParens": "always",
+  "printWidth": 120,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ],
+  "ignore": []
+}

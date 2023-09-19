@@ -1,35 +1,36 @@
 import { ParentComponent, Show, JSXElement, Switch, Match, onMount, JSX,createSignal, createEffect} from "solid-js";
-import { useResponsiveLeftBarGrid, useResponsiveRightBarGrid } from "../hooks/useResponsiveGrid";
-import { BreakPointPosition, StartPosition } from "../types/gridPosition";
-import { HeaderContainer } from "../components/header/HeaderContainer";
-import { HeaderCenter} from "../components/header/HeaderCenter";
-import { HeaderLeft } from "../components/header/HeaderLeft";
-import { HeaderRight } from "../components/header/HeaderRight";
-import { FooterContainer } from "../components/footer/FooterContainer";
-import { FooterCenter } from "../components/footer/FooterCenter";
-import { FooterLeft } from "../components/footer/FooterLeft";
-import { FooterRight } from "../components/footer/FooterRight";
-import { PageCenterContainer } from "../components/main_page/PageCenterContainer";
-import { LeftBar } from "../components/main_page/LeftBar";
-import { RightBar } from "../components/main_page/RightBar";
-import { MainPage } from "../components/main_page/MainPage";
-import { MainPageTop } from "../components/main_page/MainPageTop";
-import { MainPageBottom } from "../components/main_page/MainPageBottom"
-import {MainPageCenter} from "../components/main_page/MainPageCenter";
-import {BREAKPOINT_POSITION} from "../enums/break_point_enum";
+import {useResponsiveLeftBarGrid, useResponsiveRightBarGrid} from "../hooks/useResponsiveGrid.ts";
+import {BreakPointPosition, StartPosition} from "../types/gridPosition.ts";
+import {HeaderContainer} from "../components/header/HeaderContainer.tsx";
+import {HeaderCenter} from "../components/header/HeaderCenter.tsx";
+import {HeaderLeft} from "../components/header/HeaderLeft.tsx";
+import {HeaderRight} from "../components/header/HeaderRight.tsx";
+import {FooterContainer} from "../components/footer/FooterContainer.tsx";
+import {FooterCenter} from "../components/footer/FooterCenter.tsx";
+import {FooterLeft} from "../components/footer/FooterLeft.tsx";
+import {FooterRight} from "../components/footer/FooterRight.tsx";
+import {PageCenterContainer} from "../components/main_page/PageCenterContainer.tsx";
+import {LeftBar} from "../components/main_page/LeftBar.tsx";
+import {RightBar} from "../components/main_page/RightBar.tsx";
+import {MainPage} from "../components/main_page/MainPage.tsx";
+import {MainPageTop} from "../components/main_page/MainPageTop.tsx";
+import {MainPageBottom} from "../components/main_page/MainPageBottom.tsx"
+import {MainPageCenter} from "../components/main_page/MainPageCenter.tsx";
+import {Size} from "../types/css_types.ts";
+import {BreakPointStore} from "../components/stores/break_point_store.tsx";
 
 
 function generateAppShellContainerStyle(): JSX.CSSProperties{
 return {
-
+    height: "100%",
     display: "grid",
-   "grid-template-areas": `"header-container header-container header-container"
-                            "main-container main-container main-container"
-                            "footer footer footer"`,
+    "grid-template-areas": `"header-container"
+                            "main-container"
+                            "footer"`,
 
-    "grid-template-rows": "auto 1fr auto",
+    "grid-template-rows": "auto minmax(0,1fr) auto",
     "grid-gap": "0.5rem",
-    overflow: "auto",
+
 
 }
 
@@ -52,17 +53,15 @@ interface AppShellProps {
 
 
 export const AppShell: ParentComponent<AppShellProps>=  function (props) {
-   const [gridGap, setGridGap] = createSignal("0rem");
+    let appShell: HTMLDivElement;
+    const [gridGap, setGridGap] = createSignal<Size>("0rem");
     const [getLeftBarBreakPoint, setLeftBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-left");
     const [getRightBarBreakPoint, setRightBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-right");
     if(props.autoBreakPoints??true){
         onMount(()=>{
-            createEffect(()=>{
-                setLeftBarBreakPoint(useResponsiveLeftBarGrid(props.leftBarBreakPoint))
-                setRightBarBreakPoint(useResponsiveRightBarGrid(props.rightBarBreakPoint));
-                if(getLeftBarBreakPoint()===BREAKPOINT_POSITION.MAIN_TOP || getRightBarBreakPoint()===BREAKPOINT_POSITION.MAIN_TOP || getLeftBarBreakPoint()===BREAKPOINT_POSITION.MAIN_BOTTOM || getRightBarBreakPoint()===BREAKPOINT_POSITION.MAIN_BOTTOM){
-                    setGridGap("1rem")
-                }
+            createEffect(() => {
+                useResponsiveLeftBarGrid(setLeftBarBreakPoint, setGridGap, props.leftBarBreakPoint)
+                useResponsiveRightBarGrid(setRightBarBreakPoint, setGridGap, props.rightBarBreakPoint)
             })
         })
 
@@ -71,7 +70,8 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
 
 
     return (
-        <div style={generateAppShellContainerStyle()} class="app-shell-container">
+        <BreakPointStore>
+            <div ref={appShell} style={generateAppShellContainerStyle()} class="app-shell-container">
             <HeaderContainer>
                 <HeaderLeft>
                     {props.leftHeaderComponent}
@@ -153,5 +153,6 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
                     </FooterRight>
             </FooterContainer>
         </div>
+        </BreakPointStore>
     )
 };

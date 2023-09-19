@@ -1,12 +1,12 @@
 
 import { ParentComponent,Accessor,JSX } from "solid-js";
-import{BreakPointPosition,StartPosition} from "../../types/gridPosition"
+import {BreakPointPosition, StartPosition} from "../../types/gridPosition.ts"
 
 
 function generateAppShellRightBarStyle(getGridArea:Accessor<BreakPointPosition|StartPosition>):JSX.CSSProperties{
     return {
         "grid-area": getGridArea(),
-        width: "95%",
+
     }
 }
 interface RightBarProps{

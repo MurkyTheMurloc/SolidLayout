@@ -4,7 +4,6 @@ import {JSX, ParentComponent } from "solid-js"
 function generateAppShellHeaderStyle():JSX.CSSProperties{
     return {
         "grid-area": "header-center",
-        "min-width": "107px",
     }
 }
 

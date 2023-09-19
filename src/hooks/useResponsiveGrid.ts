@@ -1,45 +1,54 @@
-
-import { Accessor, createSignal, onCleanup } from "solid-js";
+import {Accessor, createSignal, onCleanup, Setter} from "solid-js";
 import { BreakPointPosition,StartPosition } from "../types/gridPosition";
 import {BreakPointLayout} from "../types/break_point_layout";
 import {BREAKPOINT_POSITION} from "../enums/break_point_enum";
+import {GridAutoFlow, Size} from "../types/css_types";
+import {useBreakPoint} from "../components/stores/break_point_store";
+
+
 
 function useResponsiveGrid(
+    setBreakPointPosition: Setter<BreakPointPosition | StartPosition>,
+    setGridGap: Setter<Size>,
+    appShell: HTMLDivElement,
   position: BreakPointPosition,
   breakPoint: number,
   startPosition: StartPosition
-): () => BreakPointPosition|StartPosition {
-  const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
+): void {
+  const [windowWidth, setWindowWidth] = createSignal<number>(appShell.clientWidth);
 
   const updateWindowWidth = () => {
-    setWindowWidth(window.innerWidth);
+    setWindowWidth(appShell().outerWidth);
   };
 
-  window.addEventListener("resize", updateWindowWidth);
+  appShell().addEventListener("resize", updateWindowWidth);
 
   // Clean up the event listener when the component unmounts
   onCleanup(() => {
-    window.removeEventListener("resize", updateWindowWidth);
+    appShell().removeEventListener("resize", updateWindowWidth);
   });
 
   // Function to calculate grid columns based on window width
-  const getBreakPoints = (): BreakPointPosition|StartPosition => {
+
     if (windowWidth() <= breakPoint) {
-      return position;
+      setBreakPointPosition(position);
+      setGridGap("1rem")
+      return
     }
+  setGridGap("0rem")
+  setBreakPointPosition(startPosition);
+  return
 
-    return startPosition;
-  };
 
-  return getBreakPoints;
 }
 
-function useResponsiveLeftBarGrid( breakPointPosition:BreakPointPosition=BREAKPOINT_POSITION.TOP_RIGHT,breakPoint:number=757, startPosition:StartPosition="bar-left"){
-  return useResponsiveGrid(breakPointPosition, breakPoint,startPosition)
+function useResponsiveLeftBarGrid(setBreakPointPosition: Setter<BreakPointPosition | StartPosition>, setGridGap: Setter<Size>, appShell: HTMLDivElement, breakPointPosition: BreakPointPosition = BREAKPOINT_POSITION.TOP_RIGHT, breakPoint: number = 757, startPosition: StartPosition = "bar-left") {
+  return useResponsiveGrid(setBreakPointPosition, setGridGap, appShell, breakPointPosition, breakPoint, startPosition)
+
 }
 
-function useResponsiveRightBarGrid( breakPointPosition:BreakPointPosition=BREAKPOINT_POSITION.MAIN_TOP,breakPoint:number=757, startPosition:StartPosition="bar-right"){
-  return useResponsiveGrid(breakPointPosition, breakPoint,startPosition)
+function useResponsiveRightBarGrid(setBreakPointPosition: Setter<BreakPointPosition | StartPosition>, setGridGap: Setter<Size>, appShell: HTMLDivElement, breakPointPosition: BreakPointPosition = BREAKPOINT_POSITION.MAIN_TOP, breakPoint: number = 757, startPosition: StartPosition = "bar-right") {
+  return useResponsiveGrid(setBreakPointPosition, setGridGap, appShell, breakPointPosition, breakPoint, startPosition)
 }
 
 function useAutoBreakPoints(autoFill:boolean=true, minColumnWidth:number=200,breakPointLayout:BreakPointLayout={} ):Accessor<string>{
@@ -116,30 +125,59 @@ function useAutoBreakPoints(autoFill:boolean=true, minColumnWidth:number=200,bre
 
 }
 
-function useresponsiveReel(): "rows" | "column" {
-  const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
-  const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
+function useresponsiveReel(setRowType: Setter<GridAutoFlow>, setColumnWidth: Setter<Size>, reelContainer: HTMLDivElement): void {
+  const breakPoint = useBreakPoint();
+  let switchCondition = false;
+  if (typeof breakPoint !== "undefined") {
+    switchCondition = true
+  }
+  const [windowWidth, setWindowWidth] = createSignal(reelContainer.outerWidth);
+  const [windowHeight, setWindowHeight] = createSignal(reelContainer.outerWidthHeight);
 
   const updateWindowWidth = () => {
-    setWindowWidth(window.innerWidth);
+    setWindowWidth(reelContainer.outerWidth);
   };
     const updateWindowHeight = () => {
-    setWindowHeight(window.innerHeight);
+      setWindowHeight(reelContainer.innerHeight);
     }
 
-  window.addEventListener("resize", updateWindowWidth);
-    window.addEventListener("resize", updateWindowHeight);
+  reelContainer.addEventListener("resize", updateWindowWidth);
+  reelContainer.addEventListener("resize", updateWindowHeight);
 
   // Clean up the event listener when the component unmounts
   onCleanup(() => {
-    window.removeEventListener("resize", updateWindowWidth);
-        window.removeEventListener("resize", updateWindowHeight);
+    reelContainer.removeEventListener("resize", updateWindowWidth);
+    reelContainer.removeEventListener("resize", updateWindowHeight);
   });
+  switch (switchCondition) {
+    case  switchCondition:
+      if (windowWidth() <= breakPoint) {
+        setRowType("column");
+        setColumnWidth("max-content");
+        return;
+      }
+      if (windowWidth() > windowHeight()) {
+        setRowType("row");
+        setColumnWidth("100%");
+        return;
+      }
+      break;
 
-    if(windowWidth()>windowHeight()){
-      return "rows";
-    }
-    return "column";
+    default:
+      if (windowWidth() > windowHeight()) {
+        setRowType("row");
+        setColumnWidth("100%");
+        return;
+      }
+      setRowType("column");
+      setColumnWidth("45%");
+
+      break;
+
+
+  }
+
+  return;
 
   };
 

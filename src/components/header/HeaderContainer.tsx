@@ -8,10 +8,10 @@ function generateAppShellHeaderContainerStyle(): JSX.CSSProperties{
         "grid-area": "header-container",
          display: "grid",
         "grid-template-areas": `"header-left header-center header-right"`,
-        "grid-template-columns": "auto 1fr auto",
-        "grid-gap": "1rem",
+        "grid-template-columns": "auto minmax(0,1fr) auto",
+        "grid-gap": "0.5rem",
         "margin": "1rem",
-        overflow: "auto",
+
     }
 }
 export const HeaderContainer:ParentComponent = function (props){

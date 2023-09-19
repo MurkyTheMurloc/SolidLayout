@@ -8,7 +8,6 @@ function generateAppShellMainContainerStyle():JSX.CSSProperties{
         "grid-template-areas": `"bar-left main-center-container bar-right"`,
         "grid-template-columns": "auto 6fr auto",
         "grid-gap": "1rem",
-        "min-height": "100vh",
     }
 }
 

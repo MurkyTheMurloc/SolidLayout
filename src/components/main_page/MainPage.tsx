@@ -10,7 +10,6 @@ function generateAppShellMainStyle(gridGap:Accessor<string>):JSX.CSSProperties{
                                 "app-shell-main-page-container-center"
                                 "app-shell-main-page-container-bottom"`,
         "grid-template-rows": "auto 1fr auto",
-        "max-width": "90%",
         "grid-gap": gridGap(),
 
 

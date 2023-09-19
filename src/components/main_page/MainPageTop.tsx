@@ -4,6 +4,8 @@ import {JSX, ParentComponent } from "solid-js";
 function generateAppShellMainPageTopStyle():JSX.CSSProperties{
     return {
         "grid-area": "app-shell-main-page-container-top",
+
+
     }
 }
 

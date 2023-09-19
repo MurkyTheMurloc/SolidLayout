@@ -1,22 +1,31 @@
 
-import {JSX, ParentComponent } from "solid-js";
+import {JSX, ParentComponent, Accessor} from "solid-js";
 
 
-function generateAppShellMainStyle():JSX.CSSProperties{
+function generateAppShellMainStyle(gridGap:Accessor<string>):JSX.CSSProperties{
     return {
         "grid-area": "main-center-container",
         display: "grid",
         "grid-template-areas": `"app-shell-main-page-container-top"
                                 "app-shell-main-page-container-center"
                                 "app-shell-main-page-container-bottom"`,
-        "grid-template-rows": "1fr auto 1fr",
-        "grid-gap": "1rem",
+        "grid-template-rows": "auto 1fr auto",
+        "max-width": "90%",
+        "grid-gap": gridGap(),
+
+
+
     }
 }
 
-export const MainPage:ParentComponent = function (props){
+interface MainPageProps{
+    gridGap:Accessor<string>;
+}
+export const MainPage:ParentComponent<MainPageProps> = function (props){
+
+
     return (
-        <div style={generateAppShellMainStyle()} class="app-shell-main-page-container">
+        <div style={generateAppShellMainStyle(props.gridGap)} class="app-shell-main-page-container">
               {props.children}
             </div>
     )

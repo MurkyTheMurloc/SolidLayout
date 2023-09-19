@@ -1,7 +1,7 @@
 
 import { JSXElement, ParentComponent,JSX } from "solid-js";
-import {MarginInline, Gap, FlexBasis} from "../types/css_types.ts";
-import {createUniqueClassName} from "../helper/helper.ts";
+import {MarginInline, Gap, FlexBasis} from "../types/css_types";
+import {createUniqueClassName} from "../helper/helper";
 
 interface DualPannelProps extends JSX.DOMAttributes<HTMLDivElement> {
   children: [JSXElement, JSXElement];

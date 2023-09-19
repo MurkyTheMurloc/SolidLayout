@@ -115,4 +115,33 @@ function useAutoBreakPoints(autoFill:boolean=true, minColumnWidth:number=200,bre
 
 }
 
-export { useResponsiveLeftBarGrid, useResponsiveRightBarGrid,useAutoBreakPoints };
+
+function useresponsiveReel(): "rows" | "column" {
+  const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
+  const [windowHeight, setWindowHeight] = createSignal(window.innerHeight);
+
+  const updateWindowWidth = () => {
+    setWindowWidth(window.innerWidth);
+  };
+  const updateWindowHeight = () => {
+    setWindowHeight(window.innerHeight);
+  }
+
+  window.addEventListener("resize", updateWindowWidth);
+  window.addEventListener("resize", updateWindowHeight);
+
+  // Clean up the event listener when the component unmounts
+  onCleanup(() => {
+    window.removeEventListener("resize", updateWindowWidth);
+    window.removeEventListener("resize", updateWindowHeight);
+  });
+
+  if(windowWidth()>windowHeight()){
+    return "rows";
+  }
+  return "column";
+
+};
+
+
+export { useResponsiveLeftBarGrid, useResponsiveRightBarGrid,useAutoBreakPoints,useresponsiveReel };

@@ -16,4 +16,3 @@ export const MainPageTop:ParentComponent = function (props){
             </div>
     )
 }
-

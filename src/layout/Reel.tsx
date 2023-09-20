@@ -12,7 +12,7 @@ import {
 } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 import {useresponsiveReel} from "../hooks/useResponsiveGrid";
-import {useAppShellHeight, useAppShellWidth, useBreakPoint} from "../components/stores/break_point_store.tsx";
+import {useAppShellHeight, useAppShellWidth, useBreakPoint} from "../components/stores/break_point_store";
 interface ReelGridProps extends JSX.DOMAttributes<HTMLDivElement>  {
   children: JSXElement | JSXElement[];
   gap?: Gap;

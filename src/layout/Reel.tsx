@@ -12,6 +12,7 @@ import {
 } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 import {useresponsiveReel} from "../hooks/useResponsiveGrid";
+import {useAppShellHeight, useAppShellWidth, useBreakPoint} from "../components/stores/break_point_store.tsx";
 interface ReelGridProps extends JSX.DOMAttributes<HTMLDivElement>  {
   children: JSXElement | JSXElement[];
   gap?: Gap;
@@ -44,21 +45,25 @@ function generateStyle(props: ReelGridProps, FloatType: Accessor<"column" | "row
 }
 
 export const ReelGrid: ParentComponent<ReelGridProps> = function(props) {
-    let reelGrid: HTMLDivElement;
+
     const [flotType, setFlotType] = createSignal<GridAutoFlow>(props.gridAutoFlow || "rows");
     const [columnWidth, setColumnWidth] = createSignal<Size>("100%" || props.gridAutoColumns)
-  onMount(()=>{
-    if (props.autoBreakPoints??true){
-        createEffect(() => {
-            useresponsiveReel(setFlotType, setColumnWidth, reelGrid)
-        })
+    createEffect(() => {
+        if (props.autoBreakPoints ?? true) {
+            const breakPoint = useBreakPoint();
+            const windowWidth = useAppShellWidth();
+            const windowHeight = useAppShellHeight();
+            console.log(windowWidth)
+            useresponsiveReel(setFlotType, setColumnWidth, windowWidth(), windowHeight(), breakPoint())
+        }
 
-    }
-  })
-  const { class: className, ...restProps } = props;
+    })
+
+
+    const { class: className, ...restProps } = props;
   return (
 
-      <div ref={reelGrid} style={generateStyle(props, flotType, columnWidth)}
+      <div style={generateStyle(props, flotType, columnWidth)}
            class={props.class || createUniqueClassName("reel-grid")} {...restProps}>
         {props.children}
       </div>

@@ -1,22 +1,42 @@
-import type {ParentComponent} from "solid-js";
-import {createContext, useContext} from "solid-js";
+import type {Accessor, ParentComponent} from "solid-js";
+import {createContext, createEffect, onMount, useContext} from "solid-js";
 
 
-const BreakPoints = createContext<number>()
-
-type BreakPointStoreProps = {
-    breakPoint?: number
+type AppShellStoreProps = {
+    breakPoint: number
+    appShellWidth: number
+    appShellHeight: number
 }
-export const BreakPointStore: ParentComponent<BreakPointStoreProps> = function (props) {
+const AppShellStore = createContext<AppShellStoreProps>()
+
+
+export const AppShellStateManager: ParentComponent<AppShellStoreProps> = function (props) {
+
+
 
     return (
-        <BreakPoints.Provider value={props.breakPoint || 757}>
+        <AppShellStore.Provider value={{
+            breakPoint: () => props.breakPoint,
+            appShellWidth: () => props.appShellWidth,
+            appShellHeight: () => props.appShellHeight
+        }}>
             {props.children}
-        </BreakPoints.Provider>
+        </AppShellStore.Provider>
     )
 };
 
 
-export function useBreakPoint(): number | undefined {
-    return useContext(BreakPoints)
+export function useBreakPoint(): Accessor<number> {
+
+    return useContext<AppShellStoreProps>(AppShellStore).breakPoint
+}
+
+
+export function useAppShellWidth(): Accessor<number> {
+    console.log(useContext<AppShellStoreProps>(AppShellStore))
+    return useContext<AppShellStoreProps>(AppShellStore).appShellWidth
+}
+
+export function useAppShellHeight(): Accessor<number> {
+    return useContext<AppShellStoreProps>(AppShellStore).appShellHeight
 }

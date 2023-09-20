@@ -1,4 +1,16 @@
-import { ParentComponent, Show, JSXElement, Switch, Match, onMount, JSX,createSignal, createEffect} from "solid-js";
+import {
+    ParentComponent,
+    Show,
+    JSXElement,
+    Switch,
+    Match,
+    onMount,
+    JSX,
+    createSignal,
+    createEffect,
+    on,
+    observable
+} from "solid-js";
 import {useResponsiveLeftBarGrid, useResponsiveRightBarGrid} from "../hooks/useResponsiveGrid";
 import {BreakPointPosition, StartPosition} from "../types/gridPosition";
 import {HeaderContainer} from "../components/header/HeaderContainer";
@@ -17,7 +29,8 @@ import {MainPageTop} from "../components/main_page/MainPageTop";
 import {MainPageBottom} from "../components/main_page/MainPageBottom"
 import {MainPageCenter} from "../components/main_page/MainPageCenter";
 import {Size} from "../types/css_types";
-import {BreakPointStore} from "../components/stores/break_point_store";
+import {AppShellStateManager} from "../components/stores/break_point_store";
+
 
 
 function generateAppShellContainerStyle(): JSX.CSSProperties{
@@ -57,20 +70,19 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
     const [gridGap, setGridGap] = createSignal<Size>("0rem");
     const [getLeftBarBreakPoint, setLeftBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-left");
     const [getRightBarBreakPoint, setRightBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-right");
-    if(props.autoBreakPoints??true){
-        onMount(()=>{
-            createEffect(() => {
-                useResponsiveLeftBarGrid(setLeftBarBreakPoint, setGridGap, appShell, props.leftBarBreakPoint)
-                useResponsiveRightBarGrid(setRightBarBreakPoint, setGridGap, appShell, props.rightBarBreakPoint)
-            })
-        })
+    const [width, setWidth] = createSignal<number>();
+    const [height, setHeight] = createSignal<number>();
 
-    }
 
+    onMount(() => {
+        useResponsiveLeftBarGrid(setLeftBarBreakPoint, setGridGap, appShell, setWidth, width, setHeight, props.leftBarBreakPoint)
+        useResponsiveRightBarGrid(setRightBarBreakPoint, setGridGap, appShell, setWidth, width, setHeight, props.rightBarBreakPoint)
+
+    })
 
 
     return (
-        <BreakPointStore>
+        <AppShellStateManager breakPoint={753} appShellHeight={height()} appShellWidth={width()}>
             <div ref={appShell} style={generateAppShellContainerStyle()} class="app-shell-container">
             <HeaderContainer>
                 <HeaderLeft>
@@ -153,6 +165,6 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
                     </FooterRight>
             </FooterContainer>
         </div>
-        </BreakPointStore>
+        </AppShellStateManager>
     )
 };

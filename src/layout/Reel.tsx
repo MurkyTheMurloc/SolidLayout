@@ -44,12 +44,13 @@ function generateStyle(props: ReelGridProps, FloatType: Accessor<"column" | "row
 }
 
 export const ReelGrid: ParentComponent<ReelGridProps> = function(props) {
+    let reelGrid: HTMLDivElement;
     const [flotType, setFlotType] = createSignal<GridAutoFlow>(props.gridAutoFlow || "rows");
     const [columnWidth, setColumnWidth] = createSignal<Size>("100%" || props.gridAutoColumns)
   onMount(()=>{
     if (props.autoBreakPoints??true){
         createEffect(() => {
-            useresponsiveReel(setFlotType, setColumnWidth)
+            useresponsiveReel(setFlotType, setColumnWidth, reelGrid)
         })
 
     }
@@ -57,7 +58,7 @@ export const ReelGrid: ParentComponent<ReelGridProps> = function(props) {
   const { class: className, ...restProps } = props;
   return (
 
-      <div style={generateStyle(props, flotType, columnWidth)}
+      <div ref={reelGrid} style={generateStyle(props, flotType, columnWidth)}
            class={props.class || createUniqueClassName("reel-grid")} {...restProps}>
         {props.children}
       </div>

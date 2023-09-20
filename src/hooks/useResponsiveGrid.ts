@@ -18,14 +18,14 @@ function useResponsiveGrid(
   const [windowWidth, setWindowWidth] = createSignal<number>(appShell.clientWidth);
 
   const updateWindowWidth = () => {
-    setWindowWidth(appShell().outerWidth);
+    setWindowWidth(appShell.clientWidth);
   };
 
-  appShell().addEventListener("resize", updateWindowWidth);
+  appShell.addEventListener("resize", updateWindowWidth);
 
   // Clean up the event listener when the component unmounts
   onCleanup(() => {
-    appShell().removeEventListener("resize", updateWindowWidth);
+    appShell.removeEventListener("resize", updateWindowWidth);
   });
 
   // Function to calculate grid columns based on window width
@@ -131,14 +131,14 @@ function useresponsiveReel(setRowType: Setter<GridAutoFlow>, setColumnWidth: Set
   if (typeof breakPoint !== "undefined") {
     switchCondition = true
   }
-  const [windowWidth, setWindowWidth] = createSignal(reelContainer.outerWidth);
-  const [windowHeight, setWindowHeight] = createSignal(reelContainer.outerWidthHeight);
+  const [windowWidth, setWindowWidth] = createSignal(reelContainer.clientWidth);
+  const [windowHeight, setWindowHeight] = createSignal(reelContainer.clientHeight);
 
   const updateWindowWidth = () => {
-    setWindowWidth(reelContainer.outerWidth);
+    setWindowWidth(reelContainer.clientWidth);
   };
     const updateWindowHeight = () => {
-      setWindowHeight(reelContainer.innerHeight);
+      setWindowHeight(reelContainer.clientHeight);
     }
 
   reelContainer.addEventListener("resize", updateWindowWidth);

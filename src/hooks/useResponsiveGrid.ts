@@ -1,9 +1,8 @@
-import {Accessor, createEffect, createSignal, observable, onCleanup, onMount, Setter} from "solid-js";
+import {Accessor, createEffect, createSignal, onCleanup, Setter} from "solid-js";
 import {BreakPointPosition, StartPosition} from "../types/gridPosition";
 import {BreakPointLayout} from "../types/break_point_layout";
 import {BREAKPOINT_POSITION} from "../enums/break_point_enum";
 import {GridAutoFlow, Size} from "../types/css_types";
-import {useAppShellWidth, useBreakPoint, useAppShellHeight} from "../components/stores/break_point_store";
 
 
 function useResponsiveGrid(
@@ -126,16 +125,13 @@ function useresponsiveReel(setRowType: Setter<GridAutoFlow>, setColumnWidth: Set
 
 
     if (typeof breakPoint !== "undefined") {
-        console.log("breakpoint is defined", windowWidth)
+
         if (windowWidth <= breakPoint) {
-            console.log("breakpoint is defined")
             setRowType("column");
             setColumnWidth("max-content");
-
-
         }
         if (windowWidth > breakPoint) {
-            console.log(typeof breakPoint)
+
             setRowType("row");
             setColumnWidth("100%");
 

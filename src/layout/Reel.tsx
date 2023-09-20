@@ -1,4 +1,4 @@
-import {JSXElement, ParentComponent, JSX, createSignal, onMount, Accessor, createEffect} from "solid-js";
+import {JSXElement, ParentComponent, JSX, createSignal, Accessor, createEffect} from "solid-js";
 import {
     Gap,
     Padding,
@@ -53,7 +53,6 @@ export const ReelGrid: ParentComponent<ReelGridProps> = function(props) {
             const breakPoint = useBreakPoint();
             const windowWidth = useAppShellWidth();
             const windowHeight = useAppShellHeight();
-            console.log(windowWidth)
             useresponsiveReel(setFlotType, setColumnWidth, windowWidth(), windowHeight(), breakPoint())
         }
 

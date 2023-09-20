@@ -7,9 +7,6 @@ import {
     onMount,
     JSX,
     createSignal,
-    createEffect,
-    on,
-    observable
 } from "solid-js";
 import {useResponsiveLeftBarGrid, useResponsiveRightBarGrid} from "../hooks/useResponsiveGrid";
 import {BreakPointPosition, StartPosition} from "../types/gridPosition";

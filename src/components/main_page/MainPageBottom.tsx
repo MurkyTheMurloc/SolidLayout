@@ -1,10 +1,9 @@
-
-import {JSX, ParentComponent } from "solid-js";
+import {JSX, ParentComponent} from "solid-js";
+import {BREAKPOINT_POSITION} from "../../enums/break_point_enum.ts";
 
 function generateAppShellMainPageBottomStyle():JSX.CSSProperties{
     return {
-        "grid-area": "app-shell-main-page-container-bottom",
-
+        "grid-area": BREAKPOINT_POSITION.MAIN_BOTTOM,
     }
 }
 

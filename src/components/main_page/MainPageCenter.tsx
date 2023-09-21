@@ -1,9 +1,7 @@
-
-import {JSX, ParentComponent } from "solid-js";
+import {JSX, ParentComponent} from "solid-js";
 
 function generateAppShellFooterLeftStyle():JSX.CSSProperties{
     return {
-        height: "100%",
         "grid-area":  "app-shell-main-page-container-center",
 
     }

@@ -1,18 +1,19 @@
-import {JSXElement, ParentComponent, JSX, createSignal, Accessor, createEffect} from "solid-js";
+import {Accessor, createEffect, createSignal, JSX, JSXElement, ParentComponent} from "solid-js";
 import {
     Gap,
+    GridAutoColumns,
+    GridAutoFlow,
+    Overflow,
     Padding,
     ScrollBehavior,
     ScrollPadding,
     ScrollSnapType,
-    GridAutoFlow,
-    GridAutoColumns,
-    Overflow,
     Size
 } from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
 import {useresponsiveReel} from "../hooks/useResponsiveGrid";
-import {useAppShellHeight, useAppShellWidth, useBreakPoint} from "../components/stores/break_point_store";
+import {useAppShellHeight, useAppShellWidth, useBreakPoint} from "../components/stores/break_point_store.tsx";
+
 interface ReelGridProps extends JSX.DOMAttributes<HTMLDivElement>  {
   children: JSXElement | JSXElement[];
   gap?: Gap;
@@ -29,7 +30,7 @@ interface ReelGridProps extends JSX.DOMAttributes<HTMLDivElement>  {
 
 }
 
-function generateStyle(props: ReelGridProps, FloatType: Accessor<"column" | "rows">, columnWidth: Accessor<Size>): JSX.CSSProperties {
+function generateStyle(props: ReelGridProps, FloatType: Accessor<"column" | "row">, columnWidth: Accessor<Size>): JSX.CSSProperties {
   return {
     display: "grid",
     "grid-auto-flow":  FloatType(),
@@ -45,21 +46,19 @@ function generateStyle(props: ReelGridProps, FloatType: Accessor<"column" | "row
 }
 
 export const ReelGrid: ParentComponent<ReelGridProps> = function(props) {
-
-    const [flotType, setFlotType] = createSignal<GridAutoFlow>(props.gridAutoFlow || "rows");
+    const breakPoint = useBreakPoint();
+    const windowWidth = useAppShellWidth();
+    const windowHeight = useAppShellHeight();
+    const [flotType, setFlotType] = createSignal<GridAutoFlow>(props.gridAutoFlow || "row");
     const [columnWidth, setColumnWidth] = createSignal<Size>("100%" || props.gridAutoColumns)
     createEffect(() => {
         if (props.autoBreakPoints ?? true) {
-            const breakPoint = useBreakPoint();
-            const windowWidth = useAppShellWidth();
-            const windowHeight = useAppShellHeight();
             useresponsiveReel(setFlotType, setColumnWidth, windowWidth(), windowHeight(), breakPoint())
         }
-
     })
 
 
-    const { class: className, ...restProps } = props;
+    const {class: className, ...restProps} = props;
   return (
 
       <div style={generateStyle(props, flotType, columnWidth)}

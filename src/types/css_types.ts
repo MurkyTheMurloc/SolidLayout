@@ -1,10 +1,19 @@
 type SizeUnit = "px" | "rem" | "%" | "em" | "vh" | "vw" | "vmin" | "vmax";
-export type Size = `${number}${SizeUnit}`;
+export type Size =
+    `${number}${SizeUnit}`
+    | "auto"
+    | "content"
+    | "fit-content"
+    | "max-content"
+    | "min-content"
+    | "inherit"
+    | "initial"
+    | "unset";
 
 type GridUnit = "fr" | SizeUnit;
 type GridSize = `${number}${GridUnit}`;
 
-export type Height = Size 
+export type Height = Size
 export type FlexBasis = "auto" | "content" | "fit-content" | "max-content" | "min-content" | "inherit" | "initial" | "unset" | Size;
 export type GridAutoFlow = "row" | "column" | "row dense" | "column dense";
 export type GridAutoColumns = Size;

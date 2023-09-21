@@ -1,22 +1,17 @@
-
-import { ParentComponent,Accessor, JSX } from "solid-js";
-import {BreakPointPosition, StartPosition} from "../../types/gridPosition"
+import {JSX, ParentComponent} from "solid-js";
 
 
-
-function generateAppShellLeftBarStyle(getGridArea:Accessor<BreakPointPosition|StartPosition>):JSX.CSSProperties{
+function generateAppShellLeftBarStyle(): JSX.CSSProperties {
     return {
-        "grid-area": getGridArea(),
+        "grid-area": "bar-left",
     }
 }
 
-interface LeftBarProps{
-    getGridArea:Accessor<BreakPointPosition|StartPosition>
-}
 
-export const LeftBar:ParentComponent<LeftBarProps> = function (props){
+export const LeftBar: ParentComponent = function (props) {
+
     return (
-        <div style={generateAppShellLeftBarStyle(props.getGridArea)} class="app-shell-left-bar">
+        <div style={generateAppShellLeftBarStyle()} class="app-shell-left-bar">
               {props.children}
         </div>
     )

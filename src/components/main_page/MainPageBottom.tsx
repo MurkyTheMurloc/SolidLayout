@@ -1,5 +1,5 @@
 import {JSX, ParentComponent} from "solid-js";
-import {BREAKPOINT_POSITION} from "../../enums/break_point_enum.ts";
+import {BREAKPOINT_POSITION} from "../../enums/break_point_enum";
 
 function generateAppShellMainPageBottomStyle():JSX.CSSProperties{
     return {

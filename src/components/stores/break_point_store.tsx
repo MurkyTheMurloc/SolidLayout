@@ -1,16 +1,19 @@
 import type {Accessor, ParentComponent} from "solid-js";
 import {createContext, useContext} from "solid-js";
-import {BreakPointPosition, StartPosition} from "../../types/gridPosition.ts";
 
 
 type AppShellStoreProps = {
     breakPoint: number
     appShellWidth: number
     appShellHeight: number
-    rightBarGridArea: StartPosition | BreakPointPosition
-    leftBarGridArea: StartPosition | BreakPointPosition
 }
-const AppShellStore = createContext<AppShellStoreProps>()
+
+type AppShellStoreContext = {
+    breakPoint: Accessor<number>
+    appShellWidth: Accessor<number>
+    appShellHeight: Accessor<number>
+}
+const AppShellStore = createContext<AppShellStoreContext>()
 
 
 export const AppShellStateManager: ParentComponent<AppShellStoreProps> = function (props) {
@@ -27,24 +30,34 @@ export const AppShellStateManager: ParentComponent<AppShellStoreProps> = functio
 
 
 export function useBreakPoint(): Accessor<number> {
+    // @ts-ignore
+    const breakPoint = useContext<AppShellStoreContext>(AppShellStore)
+    if (typeof breakPoint.breakPoint === "undefined") {
+        throw new Error("breakPoint is undefined")
+    }
 
-    return useContext<AppShellStoreProps>(AppShellStore).breakPoint
+    return breakPoint.breakPoint
 }
 
 
 export function useAppShellWidth(): Accessor<number> {
+    // @ts-ignore
+    const appShellWidth = useContext<AppShellStoreContext>(AppShellStore)
+    if (typeof appShellWidth.appShellWidth === "undefined") {
+        throw new Error("appShellWidth is undefined")
+    }
 
-    return useContext<AppShellStoreProps>(AppShellStore).appShellWidth
+
+    return appShellWidth.appShellWidth
 }
 
 export function useAppShellHeight(): Accessor<number> {
-    return useContext<AppShellStoreProps>(AppShellStore).appShellHeight
+    // @ts-ignore
+    const appShellHeight = useContext<AppShellStoreContext>(AppShellStore)
+    if (typeof appShellHeight.appShellHeight === "undefined") {
+        throw new Error("appShellHeight is undefined")
+    }
+
+    return appShellHeight.appShellHeight
 }
 
-export function useRightBarGridArea(): Accessor<StartPosition | BreakPointPosition> {
-    return useContext<AppShellStoreProps>(AppShellStore).rightBarGridArea
-}
-
-export function useLeftBarGridArea(): Accessor<StartPosition | BreakPointPosition> {
-    return useContext<AppShellStoreProps>(AppShellStore).leftBarGridArea
-}

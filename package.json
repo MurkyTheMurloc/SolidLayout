@@ -2,7 +2,6 @@
   "name": "solid-layout",
   "private": false,
   "version": "1.6.1",
-
   "source": "./dist/source/index.jsx",
   "main": "./dist/source/index.jsx",
   "module": "./dist/esm/index.js",
@@ -55,7 +54,7 @@
     "rollup": "^3.29.2",
     "rollup-plugin-visualizer": "^5.9.2",
     "rollup-preset-solid": "^2.0.1",
-    "solid-js": "^1.7.11",
+    "solid-js": "^1.7.12",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-plugin-solid": "^2.7.0"

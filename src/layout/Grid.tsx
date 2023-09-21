@@ -1,8 +1,8 @@
-import {Accessor, JSXElement, onMount, ParentComponent,JSX} from "solid-js";
+import {Accessor, JSX, JSXElement, onMount, ParentComponent} from "solid-js";
 import {Gap, Padding} from "../types/css_types";
 import {createUniqueClassName} from "../helper/helper";
-import {useAutoBreakPoints} from "../hooks/useResponsiveGrid";
 import {BreakPointLayout} from "../types/break_point_layout";
+import {useAutoBreakPoints} from "../hooks/useResponsiveGrid";
 
 interface GridProps  extends JSX.DOMAttributes<HTMLDivElement>  {
   children: JSXElement | JSXElement[];
@@ -28,7 +28,8 @@ export const Grid: ParentComponent<GridProps> = function(props) {
   const{class:className, ...restProps} = props;
   let autoBreakPoints:Accessor<string>= ()=>{return `repeat(${props.autoFill ? 'auto-fill' : 'auto-fit'}, minmax(${props.maxColumnWidth|| "3"}, 1fr));`}
   if(props.AutoBreakPoints??true) {
-    onMount(()=>{autoBreakPoints = useAutoBreakPoints(props.autoFill, props.maxColumnWidth, props.breakPointLayout)
+    onMount(() => {
+      autoBreakPoints = useAutoBreakPoints(props.autoFill, props.maxColumnWidth, props.breakPointLayout)
     })
   }
   return (

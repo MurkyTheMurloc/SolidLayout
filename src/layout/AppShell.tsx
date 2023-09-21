@@ -18,7 +18,7 @@ import {MainPageBottom} from "../components/main_page/MainPageBottom"
 import {MainPageCenter} from "../components/main_page/MainPageCenter";
 import {Size} from "../types/css_types";
 import {AppShellStateManager} from "../components/stores/break_point_store";
-import {BREAKPOINT_POSITION} from "../enums/break_point_enum.ts";
+import {BREAKPOINT_POSITION} from "../enums/break_point_enum";
 
 
 function generateAppShellContainerStyle(): JSX.CSSProperties{
@@ -54,12 +54,13 @@ interface AppShellProps {
 
 
 export const AppShell: ParentComponent<AppShellProps>=  function (props) {
+    // @ts-ignore
     let appShell: HTMLDivElement;
     const [gridGap, setGridGap] = createSignal<Size>("0rem");
     const [getLeftBarBreakPoint, setLeftBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-left");
     const [getRightBarBreakPoint, setRightBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-right");
-    const [width, setWidth] = createSignal<number>();
-    const [height, setHeight] = createSignal<number>();
+    const [width, setWidth] = createSignal<number>(0);
+    const [height, setHeight] = createSignal<number>(0);
 
 
     onMount(() => {
@@ -73,8 +74,7 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
 
 
     return (
-        <AppShellStateManager breakPoint={753} appShellHeight={height()} appShellWidth={width()}
-                              leftBarGridArea={getLeftBarBreakPoint()} rightBarGridArea={getRightBarBreakPoint()}>
+        <AppShellStateManager breakPoint={753} appShellHeight={height()} appShellWidth={width()}>
             <div ref={appShell} style={generateAppShellContainerStyle()} class="app-shell-container">
             <HeaderContainer>
                 <HeaderLeft>

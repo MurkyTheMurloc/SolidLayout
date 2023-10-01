@@ -13,7 +13,18 @@ export type Size =
 type GridUnit = "fr" | SizeUnit;
 type GridSize = `${number}${GridUnit}`;
 
+export type FlexDirection =
+    | 'row'
+    | 'row-reverse'
+    | 'column'
+    | 'column-reverse'
+    | 'inherit'
+    | 'initial'
+    | 'revert'
+    | 'revert-layer'
+    | 'unset';
 export type Height = Size
+export type Width = Size
 export type FlexBasis = "auto" | "content" | "fit-content" | "max-content" | "min-content" | "inherit" | "initial" | "unset" | Size;
 export type GridAutoFlow = "row" | "column" | "row dense" | "column dense";
 export type GridAutoColumns = Size;

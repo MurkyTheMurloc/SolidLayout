@@ -1,6 +1,5 @@
-import {createEffect, createSignal, JSX, JSXElement, onMount, ParentComponent, Show,} from "solid-js";
-import {useResizeObserver, useResponsiveGridLeftBar, useResponsiveGridRightBar} from "../hooks/useResponsiveGrid";
-import {BreakPointPosition, StartPosition} from "../types/gridPosition";
+import {type JSXElement, type ParentComponent, Show,} from "solid-js";
+import {BreakPointPosition} from "../types/gridPosition";
 import {HeaderContainer} from "../components/header/HeaderContainer";
 import {HeaderCenter} from "../components/header/HeaderCenter";
 import {HeaderLeft} from "../components/header/HeaderLeft";
@@ -12,137 +11,92 @@ import {FooterRight} from "../components/footer/FooterRight";
 import {PageCenterContainer} from "../components/main_page/PageCenterContainer";
 import {LeftBar} from "../components/main_page/LeftBar";
 import {RightBar} from "../components/main_page/RightBar";
-import {MainPage} from "../components/main_page/MainPage";
+import {MainPage} from "../components/main_page/MainPageContainer";
 import {MainPageTop} from "../components/main_page/MainPageTop";
 import {MainPageBottom} from "../components/main_page/MainPageBottom"
 import {MainPageCenter} from "../components/main_page/MainPageCenter";
-import {Size} from "../types/css_types";
-import {AppShellStateManager} from "../components/stores/break_point_store";
+
+import {appShellBreakPoint, appShellContainer} from "../styles/app_shell.css";
 import {BREAKPOINT_POSITION} from "../enums/break_point_enum";
+import {Size} from "../types/css_types.ts";
+import {assignInlineVars} from "@vanilla-extract/dynamic";
 
 
-function generateAppShellContainerStyle(): JSX.CSSProperties{
-return {
-    height: "100%",
-    display: "grid",
-    "grid-template-areas": `"header-container"
-                            "main-container"
-                            "footer"`,
-
-    "grid-template-rows": "auto minmax(0,1fr) auto",
-    "grid-gap": "0.5rem",
-
-
-}
-
-}
-
-interface AppShellProps {
-    autoBreakPoints?: boolean;
-    leftBarBreakPoint?: StartPosition | BreakPointPosition;
-    rightBarBreakPoint?: StartPosition | BreakPointPosition;
-    leftHeaderComponent?: JSXElement | JSXElement[] ;
-    mainHeaderComponent?: JSXElement | JSXElement[] ;
-    rightHeaderComponent?: JSXElement | JSXElement[] ;
-    leftFooterComponent?: JSXElement | JSXElement[] ;
-    mainFooterComponent?: JSXElement | JSXElement[] ;
-    rightFooterComponent?: JSXElement | JSXElement[] ;
-    leftBarComponent?: JSXElement | JSXElement[] ;
-    rightBarComponent?: JSXElement | JSXElement[] ;
+type AppShellProps = {
+    leftBarBreakPoint?: BreakPointPosition;
+    rightBarBreakPoint?: BreakPointPosition;
+    leftHeaderComponent?: JSXElement | JSXElement[];
+    mainHeaderComponent?: JSXElement | JSXElement[];
+    rightHeaderComponent?: JSXElement | JSXElement[];
+    leftFooterComponent?: JSXElement | JSXElement[];
+    mainFooterComponent?: JSXElement | JSXElement[];
+    rightFooterComponent?: JSXElement | JSXElement[];
+    leftBarComponent?: JSXElement | JSXElement[];
+    rightBarComponent?: JSXElement | JSXElement[];
     bugerMenuComponent?: JSXElement | JSXElement[];
+    appShellBreakPoint?: Size;
 }
 
 
-export const AppShell: ParentComponent<AppShellProps>=  function (props) {
-    // @ts-ignore
-    let appShell: HTMLDivElement;
-    const [gridGap, setGridGap] = createSignal<Size>("0rem");
-    const [getLeftBarBreakPoint, setLeftBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-left");
-    const [getRightBarBreakPoint, setRightBarBreakPoint] = createSignal<BreakPointPosition|StartPosition>("bar-right");
-    const [width, setWidth] = createSignal<number>(0);
-    const [height, setHeight] = createSignal<number>(0);
-
-
-    onMount(() => {
-        useResizeObserver(appShell, setWidth, setHeight);
-
-    })
-    createEffect(() => {
-        useResponsiveGridRightBar(setRightBarBreakPoint, setGridGap, width(), props.rightBarBreakPoint, 753, "bar-right")
-        useResponsiveGridLeftBar(setLeftBarBreakPoint, setGridGap, width(), props.leftBarBreakPoint, 753, "bar-left")
-    })
-
-
+export const AppShell: ParentComponent<AppShellProps> = function (props) {
     return (
-        <AppShellStateManager breakPoint={753} appShellHeight={height()} appShellWidth={width()}>
-            <div ref={appShell} style={generateAppShellContainerStyle()} class="app-shell-container">
+
+        <div
+            style={assignInlineVars({
+                [appShellBreakPoint]: props.appShellBreakPoint ?? "765px"
+            })}
+            class={appShellContainer}>
             <HeaderContainer>
                 <HeaderLeft>
-                    {props.leftHeaderComponent}
-
-            <Show when={getLeftBarBreakPoint()==="header-left" && getRightBarBreakPoint()!== "header-left"}>
-               {props.bugerMenuComponent}
-            </Show>
+                    {[props.leftHeaderComponent,
+                        (props.leftBarBreakPoint === BREAKPOINT_POSITION.TOP_LEFT || props.rightBarBreakPoint === BREAKPOINT_POSITION.TOP_LEFT) ? props.bugerMenuComponent : undefined
+                    ]}
                 </HeaderLeft>
-           <HeaderCenter>
-                {props.mainHeaderComponent}
-                <Show when={getLeftBarBreakPoint()==="header-center" && getRightBarBreakPoint()!== "header-center"}>
-               {props.bugerMenuComponent}
-            </Show>
-           </HeaderCenter>
-              <HeaderRight>
-                    {props.rightHeaderComponent}
-            <Show when={getLeftBarBreakPoint()==="header-right" && getRightBarBreakPoint()!== "header-right"}>
-                {props.bugerMenuComponent}
-            </Show>
-            </HeaderRight>
+                <HeaderCenter>
+                    {[props.mainHeaderComponent,
+                        (props.leftBarBreakPoint === BREAKPOINT_POSITION.TOP_CENTER || props.rightBarBreakPoint === BREAKPOINT_POSITION.TOP_CENTER) ? props.bugerMenuComponent : undefined]}
+                </HeaderCenter>
+                <HeaderRight>
+                    {[props.rightHeaderComponent,
+                        (props.leftBarBreakPoint === BREAKPOINT_POSITION.TOP_RIGHT || props.rightBarBreakPoint === BREAKPOINT_POSITION.TOP_RIGHT) ? props.bugerMenuComponent : undefined]}
+                </HeaderRight>
             </HeaderContainer>
             <PageCenterContainer>
-
-                <Show when={getLeftBarBreakPoint()==="bar-left"}>
                     <LeftBar>
-                {props.leftBarComponent}
-            </LeftBar>
-            </Show>
-                <Show when={getRightBarBreakPoint() === "bar-right"}>
+                        {props.leftBarComponent}
+                    </LeftBar>
                     <RightBar>
-                {props.rightBarComponent}
-            </RightBar>
-                </Show>
+                        {props.rightBarComponent}
+                    </RightBar>
+                <MainPage>
+                    <MainPageCenter>
+                        {props.children}
+                    </MainPageCenter>
+                    <MainPageTop
+                        breakPoint={props.leftBarBreakPoint === BREAKPOINT_POSITION.MAIN_BOTTOM ? props.leftBarBreakPoint : props.rightBarBreakPoint}>
 
-            <MainPage gridGap={gridGap}>
-                <MainPageCenter>
-                {props.children}
-                </MainPageCenter>
-                <Show when={getRightBarBreakPoint() === BREAKPOINT_POSITION.MAIN_TOP}>
-                <MainPageTop>
-                    {props.rightBarComponent}
-                </MainPageTop>
-                </Show>
-
-                <Show when={getLeftBarBreakPoint() === BREAKPOINT_POSITION.MAIN_TOP}>
-                <MainPageTop>
-                    {props.leftBarComponent}
-                </MainPageTop>
-                </Show>
-                <Show when={getLeftBarBreakPoint() === BREAKPOINT_POSITION.MAIN_BOTTOM}>
-                <MainPageBottom>
-                    {props.leftBarComponent}
-                </MainPageBottom>
-
-                </Show>
-                <Show when={getRightBarBreakPoint() === BREAKPOINT_POSITION.MAIN_BOTTOM}>
-                    <MainPageBottom>
-                    {props.rightBarComponent}
-                </MainPageBottom>
-                </Show>
-
-            </MainPage>
+                        <Show when={props.leftBarBreakPoint === BREAKPOINT_POSITION.MAIN_TOP}>
+                            {props.leftBarComponent}
+                        </Show>
+                        <Show when={props.rightBarBreakPoint === BREAKPOINT_POSITION.MAIN_TOP}>
+                            {props.rightBarComponent}
+                        </Show>
+                    </MainPageTop>
+                    <MainPageBottom
+                        breakPoint={props.leftBarBreakPoint === BREAKPOINT_POSITION.MAIN_BOTTOM ? props.leftBarBreakPoint : props.rightBarBreakPoint}>
+                        <Show when={props.leftBarBreakPoint === BREAKPOINT_POSITION.MAIN_BOTTOM}>
+                            {props.leftBarComponent}
+                        </Show>
+                        <Show when={props.rightBarBreakPoint === BREAKPOINT_POSITION.MAIN_BOTTOM}>
+                            {props.rightBarComponent}
+                        </Show>
+                    </MainPageBottom>
+                </MainPage>
 
             </PageCenterContainer>
             <FooterContainer>
-            <FooterLeft>
-                {props.leftFooterComponent}
+                <FooterLeft>
+                    {props.leftFooterComponent}
                 </FooterLeft>
                 <FooterCenter>
                     {props.mainFooterComponent}
@@ -152,6 +106,6 @@ export const AppShell: ParentComponent<AppShellProps>=  function (props) {
                     </FooterRight>
             </FooterContainer>
         </div>
-        </AppShellStateManager>
+
     )
 };

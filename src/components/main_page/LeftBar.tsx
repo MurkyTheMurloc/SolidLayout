@@ -1,17 +1,11 @@
-import {JSX, ParentComponent} from "solid-js";
-
-
-function generateAppShellLeftBarStyle(): JSX.CSSProperties {
-    return {
-        "grid-area": "bar-left",
-    }
-}
+import type {ParentComponent} from "solid-js";
+import {leftBar} from "../../styles/apps_shell_components/main_page/left_bar.css";
 
 
 export const LeftBar: ParentComponent = function (props) {
 
     return (
-        <div style={generateAppShellLeftBarStyle()} class="app-shell-left-bar">
+        <div class={leftBar}>
               {props.children}
         </div>
     )

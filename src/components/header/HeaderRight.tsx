@@ -1,20 +1,27 @@
+import type {JSXElement, ParentComponent} from "solid-js";
+import {displayValue, headerRight, headerRightBurgerMenu} from "styles/apps_shell_components/header/header_right.css";
+import {assignInlineVars} from "@vanilla-extract/dynamic";
 
-import {JSX, ParentComponent } from "solid-js";
 
-
-
-function generateAppShellHeaderRightStyle():JSX.CSSProperties{
-    return {
-        "grid-area": "header-right",
-    }
+type HeaderRightProps = {
+    children: [JSXElement, JSXElement]
 }
 
-export const HeaderRight:ParentComponent = function (props){
-
+export const HeaderRight: ParentComponent<HeaderRightProps> = function (props) {
         return (
-            <div style={generateAppShellHeaderRightStyle()} class="app-shell-header-right">
-                    {props.children}
+            <>
+                <div class={headerRight}>
+                    {props.children[0]}
                 </div>
+                <div
+                    style={assignInlineVars({
+                        [displayValue]: props.children[1] ? "block" : "none"
+                    })}
+                    class={headerRightBurgerMenu}>
+                    {props.children[1]}
+                </div>
+            </>
+
         )
 
 }

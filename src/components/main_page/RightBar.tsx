@@ -1,16 +1,11 @@
-import {JSX, type ParentComponent,} from "solid-js";
+import {type ParentComponent,} from "solid-js";
+import {rightBar} from "styles/apps_shell_components/main_page/right_bar.css";
 
-
-function generateAppShellRightBarStyle(): JSX.CSSProperties {
-    return {
-        "grid-area": "bar-right"
-    }
-}
 
 export const RightBar: ParentComponent = function (props) {
 
     return (
-        <div style={generateAppShellRightBarStyle()} class="app-shell-right-bar">
+        <div class={rightBar}>
               {props.children}
         </div>
     )

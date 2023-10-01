@@ -1,16 +1,9 @@
+import type {ParentComponent} from "solid-js";
+import {footerMain} from "../../styles/apps_shell_components/footer/footer_center.css";
 
-import { ParentComponent,JSX } from "solid-js";
-
-
-function generateAppShellFooterCenterStyle():JSX.CSSProperties{
-    return {
-        "grid-area": "footer-center",
-
-    }
-}
 export const FooterCenter:ParentComponent = function (props){
     return (
-        <div style={generateAppShellFooterCenterStyle()} class="app-shell-footer-center">
+        <div class={footerMain}>
               {props.children}
             </div>
     )

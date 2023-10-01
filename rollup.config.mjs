@@ -1,9 +1,10 @@
 import withSolid from "rollup-preset-solid";
 import gzipPlugin from 'rollup-plugin-gzip'
-import { terser } from "rollup-plugin-terser";
+import {typescriptPaths} from 'rollup-plugin-typescript-paths';
+import {vanillaExtractPlugin} from '@vanilla-extract/rollup-plugin';
 
 export default withSolid({
     input: "./src/index.tsx",
     targets: ["esm", "cjs"],
-    plugins: [gzipPlugin(), terser()],
+    plugins: [vanillaExtractPlugin(), typescriptPaths(), gzipPlugin()],
 });

@@ -1,7 +1,10 @@
-import type {ParentComponent,JSX } from "solid-js";
-import { children, createEffect,  } from "solid-js";
+import type {JSX, ParentComponent} from "solid-js";
+import {children, createEffect,} from "solid-js";
 
 import {createUniqueClassName} from "../helper/helper";
+import {moveToForeGround, positionForeGround, zIndexForGround} from "../styles/overlay/move_to_fore_ground.css";
+import {assignInlineVars} from "@vanilla-extract/dynamic";
+import {moveToBackGround, zIndexBackground} from "../styles/overlay/move_to_background.css";
 
 const trackZindexBackground: {[key:string]:string} = {};
 const trackZindexForeground: {[key:string]:string} = {};
@@ -50,10 +53,12 @@ export const MoveToBackGround: ParentComponent<MoveToBackGroundProps> = function
 
     return (
         <div
-            style={{
-                position: props.position || "absolute",
-                "z-index": zindex,
-            }}
+            // @ts-ignore
+            style={assignInlineVars({
+                [zIndexBackground]: zindex,
+                [positionForeGround]: props.position
+            })}
+            class={moveToBackGround}
             {...props}
         >
             {c()}
@@ -76,10 +81,14 @@ export const MoveToForeGround: ParentComponent<MoveToForeGroundProps> = function
     return (
         <div
         {...props}
-            style={{
-                position:  props.position || "absolute",
-                "z-index": zindex,
-            }}
+        style={
+            // @ts-ignore
+            assignInlineVars({
+                [zIndexForGround]: zindex,
+                [positionForeGround]: props.position
+            })
+        }
+        class={moveToForeGround}
         >
             {c()}
         </div>

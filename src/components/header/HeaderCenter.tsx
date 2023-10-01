@@ -1,16 +1,28 @@
+import type {JSXElement, ParentComponent} from "solid-js"
+import {
+    displayValue,
+    headerCenter,
+    headerCenterBurgerMenu
+} from "styles/apps_shell_components/header/header_center.css";
+import {assignInlineVars} from "@vanilla-extract/dynamic";
 
-import {JSX, ParentComponent } from "solid-js"
 
-function generateAppShellHeaderStyle():JSX.CSSProperties{
-    return {
-        "grid-area": "header-center",
-    }
+type HeaderCenterProps = {
+    children: [JSXElement, JSXElement]
 }
-
-export const HeaderCenter:ParentComponent = function (props){
+export const HeaderCenter: ParentComponent<HeaderCenterProps> = function (props) {
     return (
-        <div style={generateAppShellHeaderStyle()} class="app-shell-header-center">
-              {props.children}
+        <>
+            <div class={headerCenter}>
+                {props.children[0]}
             </div>
+            <div
+                style={assignInlineVars({
+                    [displayValue]: props.children[1] ? "block" : "none"
+                })}
+                class={headerCenterBurgerMenu}>
+                {props.children[1]}
+            </div>
+        </>
     )
 }

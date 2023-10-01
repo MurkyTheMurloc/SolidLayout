@@ -1,15 +1,9 @@
-import {JSX, ParentComponent} from "solid-js";
-
-function generateAppShellFooterLeftStyle():JSX.CSSProperties{
-    return {
-        "grid-area":  "app-shell-main-page-container-center",
-
-    }
-}
+import {type ParentComponent} from "solid-js";
+import {mainPageCenter} from "styles/apps_shell_components/main_page/main_page_center.css.ts";
 
 export const MainPageCenter:ParentComponent = function (props){
     return (
-        <div style={generateAppShellFooterLeftStyle()} class="app-shell-main-page-container-center">
+        <div class={mainPageCenter}>
               {props.children}
             </div>
     )

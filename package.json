@@ -1,7 +1,7 @@
 {
   "name": "solid-layout",
   "private": false,
-  "version": "1.6.4",
+  "version": "1.6.5",
   "source": "./dist/source/index.jsx",
   "main": "./dist/source/index.jsx",
   "module": "./dist/esm/index.js",

@@ -1,6 +1,6 @@
 import type {ParentComponent} from "solid-js";
 
-import {mainPageCenterContainer} from "styles/apps_shell_components/main_page/main_page_container.css";
+import {mainPageCenterContainer} from "../../styles/apps_shell_components/main_page/main_page_container.css";
 
 export const MainPage: ParentComponent = function (props) {
     return (

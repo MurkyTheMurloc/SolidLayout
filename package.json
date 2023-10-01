@@ -1,25 +1,13 @@
 {
   "name": "solid-layout",
   "private": false,
-  "version": "1.6.6",
-  "source": "./dist/source/index.jsx",
-  "main": "./dist/source/index.jsx",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/types/index.d.ts",
-      "solid": "./dist/source/index.jsx",
-      "import": "./dist/esm/index.js",
-      "browser": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js",
-      "node": "./dist/cjs/index.js"
-    }
-  },
+  "version": "1.6.7",
+  "type": "module",
   "files": [
     "dist"
   ],
-  "type": "module",
+  "main": "./dist/solid-layout.umd.cjs",
+  "module": "./dist/solid-layout.js",
   "license": "MIT",
   "description": "A layout library for SolidJS",
   "keywords": [

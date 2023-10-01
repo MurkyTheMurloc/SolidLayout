@@ -11,6 +11,7 @@ export const appShellContainer = style({
     gridTemplateRows: "auto minmax(0,1fr) auto",
     gap: "0.5rem",
     containerName: appShell,
+    containerType: "inline-size",
 });
 
 export {appShell}

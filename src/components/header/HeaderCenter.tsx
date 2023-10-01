@@ -3,7 +3,7 @@ import {
     displayValue,
     headerCenter,
     headerCenterBurgerMenu
-} from "styles/apps_shell_components/header/header_center.css";
+} from "../../styles/apps_shell_components/header/header_center.css";
 import {assignInlineVars} from "@vanilla-extract/dynamic";
 
 

@@ -29,14 +29,16 @@ export const DualPanel: ParentComponent<DualPanelProps> = function (props) {
             [gap]: props.gap,
             [marginInline]: props.marginInline,
         })} class={dual_panel_container}>
-            // @ts-ignore
+
             <div style={assignInlineVars({
+                // @ts-ignore
                 [main_panel_size]: props.mainPanelSize,
             })} class={dual_panel_main_panel}>
           {props.children[0]}
           </div>
-            // @ts-ignore
+
             <div style={assignInlineVars(
+                // @ts-ignore
                 {[side_panel_size]: props.sidePanelSize,}
             )} class={dual_panel_side_panel}>
           {props.children[1]}

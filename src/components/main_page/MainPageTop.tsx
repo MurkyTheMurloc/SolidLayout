@@ -1,5 +1,5 @@
 import {type ParentComponent} from "solid-js";
-import {mainPageTop, mainPageTopBreakPoint} from "styles/apps_shell_components/main_page/main_page_top.css";
+import {mainPageTop, mainPageTopBreakPoint} from "../../styles/apps_shell_components/main_page/main_page_top.css";
 import {assignInlineVars} from "@vanilla-extract/dynamic";
 import {BREAKPOINT_POSITION} from "../../enums/break_point_enum";
 import {BreakPointPosition} from "../../types/gridPosition";

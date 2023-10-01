@@ -1,5 +1,9 @@
 import type {JSXElement, ParentComponent} from "solid-js";
-import {displayValue, headerRight, headerRightBurgerMenu} from "styles/apps_shell_components/header/header_right.css";
+import {
+    displayValue,
+    headerRight,
+    headerRightBurgerMenu
+} from "../../styles/apps_shell_components/header/header_right.css";
 import {assignInlineVars} from "@vanilla-extract/dynamic";
 
 

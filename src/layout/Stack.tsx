@@ -1,6 +1,6 @@
 import {JSXElement, ParentComponent} from "solid-js";
 import {FlexDirection, Gap, Padding} from "../types/css_types";
-import {direction, gap, padding, stack} from "../styles/stack.css.ts";
+import {direction, gap, padding, stack} from "../styles/stack.css";
 import {assignInlineVars} from "@vanilla-extract/dynamic";
 
 type StackProps = {

@@ -18,7 +18,7 @@ import {MainPageCenter} from "../components/main_page/MainPageCenter";
 
 import {appShellBreakPoint, appShellContainer} from "../styles/app_shell.css";
 import {BREAKPOINT_POSITION} from "../enums/break_point_enum";
-import {Size} from "../types/css_types.ts";
+import {Size} from "../types/css_types";
 import {assignInlineVars} from "@vanilla-extract/dynamic";
 
 

@@ -1,14 +1,9 @@
-import {JSX, ParentComponent} from "solid-js";
-
-function generateAppShellHeaderStyle():JSX.CSSProperties{
-    return {
-        "grid-area": "footer-right",
-    }
-}
+import type {ParentComponent} from "solid-js";
+import {footerRight} from "../../styles/apps_shell_components/footer/footer_right.css";
 
 export const FooterRight:ParentComponent = function (props){
     return (
-        <div style={generateAppShellHeaderStyle()} class="app-shell-footer-right">
+        <div class={footerRight}>
               {props.children}
             </div>
     )

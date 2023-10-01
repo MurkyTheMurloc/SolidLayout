@@ -1,42 +1,53 @@
-import {Accessor, JSX, JSXElement, onMount, ParentComponent} from "solid-js";
+import {type ParentComponent} from "solid-js";
 import {Gap, Padding} from "../types/css_types";
-import {createUniqueClassName} from "../helper/helper";
 import {BreakPointLayout} from "../types/break_point_layout";
-import {useAutoBreakPoints} from "../hooks/useResponsiveGrid";
+import {
+    autoFill,
+    grid,
+    gridGap,
+    lgColumnWidth,
+    mdColumnWidth,
+    smColumnWidth,
+    xlColumnWidth,
+    xxlColumnWidth
+} from "../styles/grid.css";
+import {assignInlineVars} from "@vanilla-extract/dynamic";
 
-interface GridProps  extends JSX.DOMAttributes<HTMLDivElement>  {
-  children: JSXElement | JSXElement[];
+
+type GridProps = {
   gap?: Gap;
   padding?: Padding;
   maxColumnWidth?: number;
-  autoFill?: boolean;
-  class?: string;
+    minColumnWidth?: number;
+    autoFill?: "auto-fill" | "auto-fit";
   AutoBreakPoints?: boolean;
   breakPointLayout: BreakPointLayout,
 }
 
-function generateStyle(props: GridProps, autoGrid:Accessor<string>):  JSX.CSSProperties {
-  return {
-    display: "grid",
-    "grid-template-columns": autoGrid(),
-    padding: `${props.padding}`,
-    gap: props.gap || "1rem",
-  };
-}
+
 
 export const Grid: ParentComponent<GridProps> = function(props) {
-  const{class:className, ...restProps} = props;
-  let autoBreakPoints:Accessor<string>= ()=>{return `repeat(${props.autoFill ? 'auto-fill' : 'auto-fit'}, minmax(${props.maxColumnWidth|| "3"}, 1fr));`}
-  if(props.AutoBreakPoints??true) {
-    onMount(() => {
-      autoBreakPoints = useAutoBreakPoints(props.autoFill, props.maxColumnWidth, props.breakPointLayout)
-    })
-  }
-  return (
-    <>
-      <div style={generateStyle(props,autoBreakPoints)} class={props.class ||  createUniqueClassName("grid")} {...restProps}>
+
+    return (
+
+        <div
+            // @ts-ignore
+            style={assignInlineVars({
+                [gridGap]: props.gap,
+                [autoFill]: props.autoFill,
+                [smColumnWidth]: `${props.minColumnWidth}px`,
+                // @ts-ignore
+                [mdColumnWidth]: `${props.minColumnWidth + 50}px`,
+                // @ts-ignore
+                [lgColumnWidth]: `${props.maxColumnWidth - 75}px`,
+                // @ts-ignore
+                [xlColumnWidth]: `${props.maxColumnWidth - 50}px`,
+                // @ts-ignore
+                [xxlColumnWidth]: `${props.maxColumnWidth + 50}px`,
+            })}
+            class={grid}>
         {props.children}
       </div>
-    </>
-  );
+
+    );
 }

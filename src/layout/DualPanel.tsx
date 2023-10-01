@@ -1,43 +1,44 @@
+import {JSXElement, ParentComponent} from "solid-js";
+import {FlexBasis, Gap, MarginInline} from "../types/css_types";
+import {
+    dual_panel_container,
+    dual_panel_main_panel,
+    dual_panel_side_panel,
+    gap,
+    main_panel_size,
+    marginInline,
+    side_panel_size
+} from "../styles/dual_panel.css";
+import {assignInlineVars} from "@vanilla-extract/dynamic";
 
-import { JSXElement, ParentComponent,JSX } from "solid-js";
-import {MarginInline, Gap, FlexBasis} from "../types/css_types";
-import {createUniqueClassName} from "../helper/helper";
-
-interface DualPannelProps extends JSX.DOMAttributes<HTMLDivElement> {
-  children: [JSXElement, JSXElement];
+type DualPanelProps = {
+    children: [JSXElement, JSXElement];
   gap?: Gap;
   marginInline?: MarginInline;
-  mainPannelSize?: FlexBasis;
-  sidePannelSize?: FlexBasis;
-  class?: string;
-
+    mainPanelSize?: FlexBasis;
+    sidePanelSize?: FlexBasis;
 }
 
-function generateStyle(props:DualPannelProps ): JSX.CSSProperties {
-  return {
-    display: "flex",
-    "flex-wrap": "wrap",
-    "align-items": "start",
-    gap: props.gap || "1rem",
-    "margin-inline": props.marginInline ||"auto",
-  }
-  };
 
-export const DualPanel: ParentComponent<DualPannelProps> = function(props) {
-  const { class: className, ...restProps } = props;
-  return (
+export const DualPanel: ParentComponent<DualPanelProps> = function (props) {
 
-      <div style={generateStyle(props)} class={props.class|| createUniqueClassName("dual-panel")} {...restProps}>
-        <div style={{
-          "flex-basis": props.mainPannelSize||"500px",
-          "flex-grow": "9999",
-        }}  class="first_child">
+
+    return (
+        // @ts-ignore
+        <div style={assignInlineVars({
+            [gap]: props.gap,
+            [marginInline]: props.marginInline,
+        })} class={dual_panel_container}>
+            // @ts-ignore
+            <div style={assignInlineVars({
+                [main_panel_size]: props.mainPanelSize,
+            })} class={dual_panel_main_panel}>
           {props.children[0]}
           </div>
-        <div style={{
-          "flex-basis": props.sidePannelSize||"300px",
-          "flex-grow": "1",
-        }} class="second_child">
+            // @ts-ignore
+            <div style={assignInlineVars(
+                {[side_panel_size]: props.sidePanelSize,}
+            )} class={dual_panel_side_panel}>
           {props.children[1]}
           </div>
       </div>

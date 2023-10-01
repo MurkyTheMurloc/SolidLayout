@@ -22,7 +22,19 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["solid-js", "vite/client", "node", "jest", "@testing-library/jest-dom"]
+    "types": [
+      "solid-js",
+      "vite/client",
+      "node",
+      "jest",
+      "@testing-library/jest-dom"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "styles/*": [
+        "src/styles/*"
+      ]
+    }
   },
   "include": [
     "src",

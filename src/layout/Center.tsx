@@ -1,63 +1,45 @@
-import { JSXElement, ParentComponent,JSX } from "solid-js";
-import {createUniqueClassName} from "../helper/helper";
+import {ParentComponent} from "solid-js";
 
-interface CenterProps extends JSX.DOMAttributes<HTMLDivElement>  {
-  children: JSXElement | JSXElement[];
-  class?: string;
-}
+import {apart, center, left, right} from "../styles/center.css";
 
-function generateStyle(): JSX.CSSProperties {
-  return {
-    display: "flex",
-    "justify-content": "center",
-    "align-items": "center",
-    "text-align": "center",
-  };
-}
 
-export const Center: ParentComponent<CenterProps> = function(props) {
-  const { class: className, ...restProps } = props;
+export const Center: ParentComponent = function (props) {
   return (
-    <div style={generateStyle()} class={props.class||createUniqueClassName("center")} {...restProps}>
+      <div class={center}>
       {props.children}
     </div>
   );
 }
 
-export const Left: ParentComponent<CenterProps> = function (props) {
-  const { class: className, ...restProps } = props;
+export const Left: ParentComponent = function (props) {
+
   return (
     <div
-      style={{ ...generateStyle(), "justify-content": "flex-start" }}
-      class={props.class || createUniqueClassName("left")}
-      {...restProps}
+        class={left}
     >
       {props.children}
     </div>
   );
 };
 
-export const Right: ParentComponent<CenterProps> = function (props) {
-  const { class: className, ...restProps } = props;
+export const Right: ParentComponent = function (props) {
+
   return (
     <div
-      style={{ ...generateStyle(), "justify-content": "flex-end" }}
-      class={props.class || createUniqueClassName("right")}
-      {...restProps}
+        class={right}
+
     >
       {props.children}
     </div>
   );
 };
 
-export const Apart: ParentComponent<CenterProps> = function (props) {
-  const { class: className, ...restProps } = props;
+export const Apart: ParentComponent = function (props) {
+
   return (
     <div
+        class={apart}
 
-      style={{ ...generateStyle(), "justify-content": "space-between" }}
-      class={props.class|| createUniqueClassName("apart")}
-      {...restProps}
     >
       {props.children}
     </div>

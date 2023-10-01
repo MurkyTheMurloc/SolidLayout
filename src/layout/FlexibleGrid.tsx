@@ -1,25 +1,17 @@
-import {JSX, JSXElement, ParentComponent, children, createEffect} from "solid-js";
+import {children, createEffect, JSXElement, ParentComponent} from "solid-js";
+import {flexible_grid, gap, padding} from "../styles/flexible_grid.css";
+import {assignInlineVars} from "@vanilla-extract/dynamic";
 import {Gap, Padding} from "../types/css_types";
-import {createUniqueClassName} from "../helper/helper";
 
-interface FlexibleGridProps  extends JSX.DOMAttributes<HTMLDivElement>  {
+type FlexibleGridProps = {
   children: JSXElement | JSXElement[];
   gap?: Gap;
   padding?: Padding
-  class?: string;
 }
 
 
 
 
-function generateStyle(props:FlexibleGridProps  ): JSX.CSSProperties  {
-  return {
-    display: "flex",
-    "flex-wrap": "wrap",
-    padding: props.padding || "1rem",
-    gap: props.gap || "1rem",
-  }
-  };
 
 
 
@@ -27,10 +19,12 @@ export const FlexibleGrid: ParentComponent<FlexibleGridProps> = function(props) 
   const c = children(() => props.children);
   // @ts-ignore
   createEffect(() => c().forEach(item => item.style.flex= "1"));
-   const { class: className, ...restProps } = props;
   return (
-
-      <div style={generateStyle(props)} class={props.class||createUniqueClassName("flex-grid")} {...restProps}>
+      // @ts-ignore
+      <div style={assignInlineVars({
+          [gap]: props.gap,
+          [padding]: props.padding,
+      })} class={flexible_grid}>
         {c()}
       </div>
   );

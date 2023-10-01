@@ -1,6 +1,6 @@
 import {createContainer, createVar, style} from "@vanilla-extract/css";
 
-const appShell = createContainer()
+export const appShell = createContainer()
 export const appShellBreakPoint = createVar()
 export const appShellContainer = style({
     height: "100%",
@@ -14,6 +14,6 @@ export const appShellContainer = style({
     containerType: "inline-size",
 });
 
-export {appShell}
+
 
 

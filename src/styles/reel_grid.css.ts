@@ -14,11 +14,11 @@ export const overflowY = createVar();
 export const breakPointDirection = createVar();
 export const breakpointAutoColumns = createVar();
 
-const small = createVar();
-const medium = createVar();
-const large = createVar();
-const xLarge = createVar();
-const xxLarge = createVar();
+//const small = createVar();
+//const medium = createVar();
+//const large = createVar();
+//const xLarge = createVar();
+//const xxLarge = createVar();
 
 
 export const reelGrid = style({
@@ -34,25 +34,25 @@ export const reelGrid = style({
     gap: fallbackVar(gap, "0rem"),
     padding: fallbackVar(padding, "0rem"),
     "@container": {
-        [`${appShell} (max-width: ${fallbackVar(small, "640")})`]: {
+        [`${appShell} (max-width: 650px)`]: {
             gridAutoFlow: fallbackVar(breakPointDirection, "column"),
             gridAutoColumns: fallbackVar(breakpointAutoColumns, "max-content"),
 
         },
-        [`${appShell} (max-width: ${fallbackVar(medium, "768px")})`]: {
-            gridAutoFlow: fallbackVar(breakPointDirection, "column"),
-            gridAutoColumns: fallbackVar(breakpointAutoColumns, "max-content"),
+        [`${appShell}  (max-width: 768px)`]: {
+            gridAutoFlow: "column",
+            gridAutoColumns: "max-content",
 
         },
-        [`${appShell} (max-width: ${fallbackVar(large, "1024px")})`]: {
+        [`${appShell} (max-width: 1025px)`]: {
             gridAutoFlow: fallbackVar(direction, "row"),
             gridAutoColumns: fallbackVar(gridAutoColumns, "100%")
         },
-        [`${appShell} (min-width: ${fallbackVar(xLarge, "1280px")})`]: {
+        [`${appShell} (min-width: 1280px)`]: {
             gridAutoFlow: fallbackVar(direction, "row"),
             gridAutoColumns: fallbackVar(gridAutoColumns, "100%")
         },
-        [`${appShell} (min-width: ${fallbackVar(xxLarge, "1536px")})`]: {
+        [`${appShell} (min-width: 1536px)`]: {
             gridAutoFlow: fallbackVar(direction, "row"),
             gridAutoColumns: fallbackVar(gridAutoColumns, "100%")
         },

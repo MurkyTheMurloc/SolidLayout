@@ -14,6 +14,9 @@ dependencies:
   nanoid:
     specifier: ^5.0.1
     version: 5.0.1
+  rollup-plugin-import-css:
+    specifier: ^3.3.4
+    version: 3.3.4(rollup@3.29.4)
 
 devDependencies:
   '@changesets/cli':
@@ -2050,7 +2053,6 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 3.29.4
-    dev: true
 
   /@types/babel__core@7.20.2:
     resolution: {integrity: sha512-pNpr1T1xLUc2l3xJKuPtsEky3ybxN3m4fJkknfIpTCTfIZCDW57oAg+EfCgIIp2rvCe0Wn++/FfodDS4YXxBwA==}
@@ -2083,7 +2085,6 @@ packages:
 
   /@types/estree@1.0.2:
     resolution: { integrity: sha512-VeiPZ9MMwXjO32/Xu7+OwflfmeoRwkE/qzndw42gGtgJwZopBnzy2gD//NN1+go1mADzkDcqf/KnFRSjTJ8xJA== }
-    dev: true
 
   /@types/is-ci@3.0.1:
     resolution: { integrity: sha512-mnb1ngaGQPm6LFZaNdh3xPOoQMkrQb/KBPhPPN2p2Wk8XgeUqWj6xPnvyQ8rvcK/VFritVmQG8tvQuy7g+9/nQ== }
@@ -3019,7 +3020,6 @@ packages:
 
   /estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
-    dev: true
 
   /esutils@2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
@@ -3123,7 +3123,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /function-bind@1.1.1:
@@ -3863,7 +3862,6 @@ packages:
   /picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
-    dev: true
 
   /pify@4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
@@ -4101,6 +4099,16 @@ packages:
       rollup: 3.29.4
     dev: true
 
+  /rollup-plugin-import-css@3.3.4(rollup@3.29.4):
+    resolution: { integrity: sha512-w5p1Dd1CavAht/P82zB3WX2RVy7O47MlJGSmgrWXTBPAkWHTbOBh/nUPz94IczCD0HLxpuT4AhF24cix7CpZWA== }
+    engines: { node: '>=16' }
+    peerDependencies:
+      rollup: ^2.x.x || ^3.x.x
+    dependencies:
+      '@rollup/pluginutils': 5.0.4(rollup@3.29.4)
+      rollup: 3.29.4
+    dev: false
+
   /rollup-plugin-terser@7.0.2(rollup@3.29.4):
     resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
     deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
@@ -4165,7 +4173,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.3
-    dev: true
 
   /run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}

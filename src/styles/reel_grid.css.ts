@@ -34,25 +34,25 @@ export const reelGrid = style({
     gap: fallbackVar(gap, "0rem"),
     padding: fallbackVar(padding, "0rem"),
     "@container": {
-        [`${appShell} (max-width: ${fallbackVar(small, "640px")})`]: {
+        [`${appShell} (max-width: 640px)`]: {
             gridAutoFlow: fallbackVar(breakPointDirection, "column"),
             gridAutoColumns: fallbackVar(breakpointAutoColumns, "max-content"),
 
         },
-        [`${appShell} (max-width: ${fallbackVar(medium, "768px")})`]: {
+        [`${appShell} (max-width: 754px)`]: {
             gridAutoFlow: fallbackVar(breakPointDirection, "column"),
             gridAutoColumns: fallbackVar(breakpointAutoColumns, "max-content"),
 
         },
-        [`${appShell} (max-width: ${fallbackVar(large, "1024px")})`]: {
+        [`${appShell} (max-width:  1024px)`]: {
             gridAutoFlow: fallbackVar(direction, "row"),
             gridAutoColumns: fallbackVar(gridAutoColumns, "100%")
         },
-        [`${appShell} (min-width: ${fallbackVar(xLarge, "1280px")})`]: {
+        [`${appShell} (min-width: 1280px)`]: {
             gridAutoFlow: fallbackVar(direction, "row"),
             gridAutoColumns: fallbackVar(gridAutoColumns, "100%")
         },
-        [`${appShell} (min-width: ${fallbackVar(xxLarge, "1536px")})`]: {
+        [`${appShell} (min-width: 1536px)`]: {
             gridAutoFlow: fallbackVar(direction, "row"),
             gridAutoColumns: fallbackVar(gridAutoColumns, "100%")
         },

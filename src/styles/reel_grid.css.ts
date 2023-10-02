@@ -34,17 +34,17 @@ export const reelGrid = style({
     gap: fallbackVar(gap, "0rem"),
     padding: fallbackVar(padding, "0rem"),
     "@container": {
-        [`${appShell} (max-width: 640px)`]: {
+        [`${appShell} (min-width: 640px)`]: {
             gridAutoFlow: fallbackVar(breakPointDirection, "column"),
             gridAutoColumns: fallbackVar(breakpointAutoColumns, "max-content"),
 
         },
-        [`${appShell} (max-width: 754px)`]: {
+        [`${appShell} (min-width: 754px)`]: {
             gridAutoFlow: fallbackVar(breakPointDirection, "column"),
             gridAutoColumns: fallbackVar(breakpointAutoColumns, "max-content"),
 
         },
-        [`${appShell} (max-width:  1024px)`]: {
+        [`${appShell} (mih-width:  1024px)`]: {
             gridAutoFlow: fallbackVar(direction, "row"),
             gridAutoColumns: fallbackVar(gridAutoColumns, "100%")
         },

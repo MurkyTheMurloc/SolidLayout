@@ -1212,7 +1212,7 @@ packages:
       babel-plugin-polyfill-corejs2: 0.4.5(@babel/core@7.23.0)
       babel-plugin-polyfill-corejs3: 0.8.4(@babel/core@7.23.0)
       babel-plugin-polyfill-regenerator: 0.5.2(@babel/core@7.23.0)
-      core-js-compat: 3.32.2
+      core-js-compat: 3.33.0
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -1361,7 +1361,7 @@ packages:
       semver: 7.5.4
       spawndamnit: 2.0.0
       term-size: 2.2.1
-      tty-table: 4.2.1
+      tty-table: 4.2.2
     dev: true
 
   /@changesets/config@2.3.1:
@@ -2355,7 +2355,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.0
       '@babel/helper-define-polyfill-provider': 0.4.2(@babel/core@7.23.0)
-      core-js-compat: 3.32.2
+      core-js-compat: 3.33.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2405,7 +2405,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001541
+      caniuse-lite: 1.0.30001542
       electron-to-chromium: 1.4.537
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
@@ -2446,8 +2446,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite@1.0.30001541:
-    resolution: { integrity: sha512-bLOsqxDgTqUBkzxbNlSBt8annkDpQB9NdzdTbO2ooJ+eC/IQcvDspDc058g84ejCelF7vHUx57KIOjEecOHXaw== }
+  /caniuse-lite@1.0.30001542:
+    resolution: { integrity: sha512-UrtAXVcj1mvPBFQ4sKd38daP8dEcXXr5sQe6QNNinaPd0iA/cxg9/l3VrSdL73jgw5sKyuQ6jNgiKO12W3SsVA== }
     dev: true
 
   /chalk@2.4.2:
@@ -2543,8 +2543,8 @@ packages:
     resolution: { integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg== }
     dev: true
 
-  /core-js-compat@3.32.2:
-    resolution: {integrity: sha512-+GjlguTDINOijtVRUxrQOv3kfu9rl+qPNdX2LTbJ/ZyVTuxK+ksVSAGX1nHstu4hrv1En/uPTtWgq2gI5wt4AQ==}
+  /core-js-compat@3.33.0:
+    resolution: { integrity: sha512-0w4LcLXsVEuNkIqwjjf9rjCoPhK8uqA4tMRh4Ge26vfLtUutshn+aRJU21I9LCJlh2QQHfisNToLjw1XEJLTWw== }
     dependencies:
       browserslist: 4.22.1
     dev: true
@@ -4513,8 +4513,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /tty-table@4.2.1:
-    resolution: {integrity: sha512-xz0uKo+KakCQ+Dxj1D/tKn2FSyreSYWzdkL/BYhgN6oMW808g8QRMuh1atAV9fjTPbWBjfbkKQpI/5rEcnAc7g==}
+  /tty-table@4.2.2:
+    resolution: { integrity: sha512-2gvCArMZLxgvpZ2NvQKdnYWIFLe7I/z5JClMuhrDXunmKgSZcQKcZRjN9XjAFiToMz2pUo1dEIXyrm0AwgV5Tw== }
     engines: {node: '>=8.0.0'}
     hasBin: true
     dependencies:

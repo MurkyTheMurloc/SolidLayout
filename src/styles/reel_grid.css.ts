@@ -14,11 +14,6 @@ export const overflowY = createVar();
 export const breakPointDirection = createVar();
 export const breakpointAutoColumns = createVar();
 
-const small = createVar();
-const medium = createVar();
-const large = createVar();
-const xLarge = createVar();
-const xxLarge = createVar();
 
 
 export const reelGrid = style({
@@ -39,7 +34,7 @@ export const reelGrid = style({
             gridAutoColumns: fallbackVar(breakpointAutoColumns, "max-content"),
 
         },
-        [`${appShell} (min-width: 754px)`]: {
+        [`${appShell} (min-width: 768px)`]: {
             gridAutoFlow: fallbackVar(breakPointDirection, "column"),
             gridAutoColumns: fallbackVar(breakpointAutoColumns, "max-content"),
 
